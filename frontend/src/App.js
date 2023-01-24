@@ -1,6 +1,8 @@
 import './App.css';
 
+
 function App() {
+  console.log(process.env.REACT_APP_SECRET_KEY) // test only, need to delete
   return (
     <div className="App">
       <header className="App-header">
