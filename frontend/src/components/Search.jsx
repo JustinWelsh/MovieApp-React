@@ -17,20 +17,20 @@ const Search = (props) => {
       setMovieTitle(e.target.value)
     }
   return (
-    <>
+    <div className="w-1/2 p-5">
       <input
         type="text"
         id="movie-input"
-        placeholder="Type here"
-        className="input input-bordered max-w-xs"
+        placeholder="Search for a movie"
+        className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg "
         name="movie-input"
         onChange={handleInputChange}
         value={movieTitle}
       ></input>
-      <button onClick={handleClick} className="btn">
+      <button onClick={handleClick} className="btn btn-ghost w-1/3 bg-slate-200 border-none rounded-none rounded-r-lg">
         Search
       </button>
-    </>
+    </div>
   );
 };
 
