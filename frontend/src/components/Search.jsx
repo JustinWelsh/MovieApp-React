@@ -16,8 +16,12 @@ const Search = (props) => {
     const handleInputChange = (e) => {
       setMovieTitle(e.target.value)
     }
+
+
+
   return (
     <div className="w-1/2 p-5">
+        <form action=""></form>
       <input
         type="text"
         id="movie-input"
@@ -27,7 +31,7 @@ const Search = (props) => {
         onChange={handleInputChange}
         value={movieTitle}
       ></input>
-      <button onClick={handleClick} className="btn btn-ghost w-1/3 bg-slate-200 border-none rounded-none rounded-r-lg">
+      <button onClick={handleClick} className="search-btn btn btn-ghost w-1/3 bg-slate-200 rounded-none rounded-r-lg">
         Search
       </button>
     </div>

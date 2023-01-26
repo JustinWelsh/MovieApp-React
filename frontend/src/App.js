@@ -11,17 +11,16 @@ function App() {
       key={movie.imdbID}
       Title={movie.Title}
       Poster={movie.Poster}
-      
+
       Type={movie.Type}
       Year={movie.Year}
     />
   ));
   return (
     <div className="container">
-      <header className="header-background">
-        <Header />
-      </header>
-      <div className="flex justify-center">
+      <Header />
+      {/* change position */}
+      <div className="search-bar">
         <Search setApiData={setApiData} />
       </div>
       <div className="flex flex-wrap justify-center">{movies}</div>
