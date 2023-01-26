@@ -12,8 +12,8 @@ const Header = () => {
     //   style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}
     >
       {/* <div className="hero-overlay bg-opacity-60"></div> */}
-      <div className="hero-content text-center text-neutral-content py-20">
-        <div className="max-w-md text-white">
+      <div className=" text-center py-36">
+        <div className="text-white">
           <h1 className="mb-5 text-6xl font-bold">Find your film</h1>
           <a href="#"className="mb-5 font-bold">
             My watchlist
