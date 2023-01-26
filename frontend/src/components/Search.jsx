@@ -1,9 +1,9 @@
 import { useState } from "react";
 const Search = (props) => {
-    const [movieTitle, setMovieTitle] = useState('')
+    const [movieTitle, setMovieTitle] = useState('') //input from the user
     const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`
 
-    const handleClick = () => {
+    const handleSearchClick = () => {
       fetch(`${baseUrl}&s=${movieTitle}&page=1`)
       .then(res => res.json())
       .then(data => {
@@ -30,7 +30,7 @@ const Search = (props) => {
         onChange={handleInputChange}
         value={movieTitle}
       ></input>
-      <button onClick={handleClick} className="search-btn btn btn-ghost w-1/3 bg-slate-200 rounded-none rounded-r-lg">
+      <button onClick={handleSearchClick} className="search-btn btn btn-ghost w-1/3 bg-slate-200 rounded-none rounded-r-lg">
         Search
       </button>
     </div>

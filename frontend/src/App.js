@@ -9,6 +9,7 @@ function App() {
   const movies = apiData.Search?.map((movie) => (
     <MovieCard
       key={movie.imdbID}
+      movieId={movie.imdbID} // try to use for fetchMovieDetails call
       Title={movie.Title}
       Poster={movie.Poster}
 
