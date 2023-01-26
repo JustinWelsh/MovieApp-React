@@ -20,8 +20,7 @@ const Search = (props) => {
 
 
   return (
-    <div className="w-1/2 p-5">
-        <form action=""></form>
+    <div className="w-1/2 py-5 my-5">
       <input
         type="text"
         id="movie-input"

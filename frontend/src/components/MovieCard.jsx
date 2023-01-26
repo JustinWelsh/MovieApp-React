@@ -2,15 +2,16 @@ const MovieCard = (props) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={props.Poster} alt="Shoes" />
+        <img src={props.Poster} alt={props.Title} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{props.Title}</h2>
-        <p>{props.Type}</p>
-        <p>{props.Year}</p>
-        <div className="card-actions justify-end">
+        <div className="flex">
+          <p>{props.Year}</p>
+          <span className="badge badge-ghost">{props.Type}</span>
+        </div>
+        <div className="card-actions justify-end pt-2">
           <button className="btn btn-primary btn-xs">View more</button>
-          <button className="btn btn-primary btn-xs">+watchlist</button>
         </div>
       </div>
     </div>

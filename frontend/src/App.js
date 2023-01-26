@@ -23,7 +23,9 @@ function App() {
       <div className="search-bar">
         <Search setApiData={setApiData} />
       </div>
-      <div className="flex flex-wrap justify-center">{movies}</div>
+      <div className="flex flex-wrap justify-center gap-10">
+        {movies}
+      </div>
     </div>
   );
 }
