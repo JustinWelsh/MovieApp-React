@@ -9,9 +9,9 @@ const Header = () => {
 
     <div
       className="hero"
-      style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}
+    //   style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}
     >
-      <div className="hero-overlay bg-opacity-60"></div>
+      {/* <div className="hero-overlay bg-opacity-60"></div> */}
       <div className="hero-content text-center text-neutral-content py-20">
         <div className="max-w-md text-white">
           <h1 className="mb-5 text-6xl font-bold">Find your film</h1>

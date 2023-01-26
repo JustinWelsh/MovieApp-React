@@ -9,11 +9,25 @@
   /* search-bar positon absolute */
 }
 
+.header{
+    background-image: url("images/movie-wallpaper.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+/* 
+    background-color: #0D0D0D;
+    background-size: 50%; 
+    background-repeat: no-repeat;
+    background-position: center; */
+}
 .search-bar{
     display: flex;
     justify-content: center;
 }
+
+
 .search-btn{
+    /* levels input field and search-btn */
     position: relative;
     bottom: 1px;
 }

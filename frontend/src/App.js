@@ -18,7 +18,9 @@ function App() {
   ));
   return (
     <div className="container">
-      <Header />
+      <div className="header">
+        <Header />
+      </div>
       {/* change position */}
       <div className="search-bar">
         <Search setApiData={setApiData} />
