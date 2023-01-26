@@ -14,5 +14,12 @@ body {
 }
 
 body{
-    background: grey;
+    background: lightgrey;
+    border: 3px solid blue;
+
+}
+
+#root{
+    border: 3px solid purple;
+
 }

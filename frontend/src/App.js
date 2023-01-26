@@ -11,6 +11,7 @@ function App() {
       key={movie.imdbID}
       Title={movie.Title}
       Poster={movie.Poster}
+      
       Type={movie.Type}
       Year={movie.Year}
     />

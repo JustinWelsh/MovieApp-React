@@ -1,5 +1,5 @@
 .container {
-  margin: auto;
+  margin: 0;
   width: 100%;
   border: 3px solid green;
   /* padding: 10px; */
@@ -8,18 +8,12 @@
 .header-background {
 
   color: #ffffff;
-  /* position: absolute; */
-  width: 550px;
-  height: 208px;
-  /* left: 0px;
-  top: 0px; */
 
-  background-image: url("./images/header-poster-img.jpg");
-  background-size: 25%; /* or "contain" depending on what you want */
-  background-position: center top;
+  /* background-image: url("./images/andre-tan-THJJRUhNlEc-unsplash.jpg"); */
+  background-color: black;
+  background-size: contain; /* or "contain */
   background-repeat: no-repeat;
-  /* text-align:center; */
   margin:auto;
-  padding:0;
+  padding:6em;
 }
 
