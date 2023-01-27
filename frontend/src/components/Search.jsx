@@ -1,18 +1,20 @@
 import { useState } from "react";
 const Search = (props) => {
+    // 3. create state to identify and set state to the value of what the user is typing to be used for our search-calls.
     const [movieTitle, setMovieTitle] = useState('') //input from the user
     const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`
 
+    // 2. Setup the first fetch function; which is utilized on the "search button"
     const handleSearchClick = () => {
       fetch(`${baseUrl}&s=${movieTitle}&page=1`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        console.log("initial call result", data)
         props.setApiData(data)
       })
       console.log(movieTitle)
     }
-  
+    // 5. setting state to the value of what the user is typing as they are typing (onChange), which is utilized in the "input" field
     const handleInputChange = (e) => {
       setMovieTitle(e.target.value)
     }
