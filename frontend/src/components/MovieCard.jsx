@@ -1,21 +1,23 @@
 import { useState } from "react";
 
 const MovieCard = (props) => {
-  const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`
+  const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
 
   // state to access more detailed data per MovieCard that is clicked on
-  const [movieDetailsData, setMovieDetailsData] = useState(null)
+  const [movieDetailsData, setMovieDetailsData] = useState(null);
   // const [stateId, setStateId] = useState(props.movieId)
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const fetchMovieDetails = () => {
-    setMovieDetailsData(null)
+    setMovieDetailsData(null);
     fetch(`${baseUrl}&i=${props.movieId}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setMovieDetailsData(data)
-      })
-    }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setMovieDetailsData(data);
+      });
+  };
 
   return (
     <div className="card w-96 shadow-xl">
@@ -33,32 +35,45 @@ const MovieCard = (props) => {
         </div> */}
 
 
+          {isModalOpen && (
+            <div className="modal-container">
+              <div
+              className="card bg-white"
+            >
 
-
-
-
+                <figure className="bg-black"><img src={movieDetailsData?.Poster} alt="Album"/></figure>
+                <div className="card-body">
+                  <h2 className="card-title text-black">{movieDetailsData?.Title}</h2>
+                  <p>{movieDetailsData?.Rated}</p>
+                  <div className="flex text-black text-sm">
+                    <p>{movieDetailsData?.Runtime}</p>
+                    <p>{movieDetailsData?.Genre}</p>
+                    <p>Watchlist</p>
+                  </div>
+                  <p className="py-7">{movieDetailsData?.Plot}</p>
+                  <div className="text-sm">
+                    <p>Director: {movieDetailsData?.Director}</p>
+                    <p>Starring: {movieDetailsData?.Actors}</p>
+                  </div>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-primary" onClick={() => setIsModalOpen(false)}>Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
         {/* The button to open modal */}
-        <label htmlFor="my-modal-6" className="btn" onClick={fetchMovieDetails}>open modal</label>
-
-        {/* Put this part before </body> tag */}
-        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle">
-
-        {movieDetailsData && alert(movieDetailsData.Title)}
-
-        
-        {/* {movieDetailsData && (
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">{movieDetailsData.Title}</h3>
-            <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-
-            <div className="modal-action">
-              <label htmlFor="my-modal-6" className="btn">Close</label>
-            </div>
-          </div>)} */}
-        </div>
-
+        <button
+          // htmlFor="my-modal-6"
+          className="btn"
+          onClick={() => {
+            fetchMovieDetails();
+            setIsModalOpen(true);
+          }}
+        >
+          new modal
+        </button>
       </div>
     </div>
   );
