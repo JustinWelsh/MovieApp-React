@@ -41,16 +41,17 @@ const MovieCard = (props) => {
               className="card bg-white"
             >
 
-                <figure className="bg-black"><img src={movieDetailsData?.Poster} alt="Album"/></figure>
+                <figure className="bg-black"><img src={movieDetailsData?.Poster} alt={movieDetailsData?.Title}/></figure>
                 <div className="card-body">
                   <h2 className="card-title text-black">{movieDetailsData?.Title}</h2>
+                  <p>{movieDetailsData?.Ratings[1]?.value}</p>
                   <p>{movieDetailsData?.Rated}</p>
                   <div className="flex text-black text-sm">
                     <p>{movieDetailsData?.Runtime}</p>
                     <p>{movieDetailsData?.Genre}</p>
                     <p>Watchlist</p>
                   </div>
-                  <p className="py-7">{movieDetailsData?.Plot}</p>
+                  <p className="pb-7">{movieDetailsData?.Plot}</p>
                   <div className="text-sm">
                     <p>Director: {movieDetailsData?.Director}</p>
                     <p>Starring: {movieDetailsData?.Actors}</p>
