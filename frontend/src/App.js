@@ -13,11 +13,11 @@ function App() {
     <MovieCard
       key={movie.imdbID}
       movieId={movie.imdbID} // try to use for fetchMovieDetails call
-      Title={movie.Title}
-      Poster={movie.Poster}
+      title={movie.Title}
+      poster={movie.Poster}
 
-      Type={movie.Type}
-      Year={movie.Year}
+      type={movie.Type}
+      year={movie.Year}
     />
   ));
   return (

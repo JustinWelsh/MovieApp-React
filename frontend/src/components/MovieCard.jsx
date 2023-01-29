@@ -22,13 +22,13 @@ const MovieCard = (props) => {
   return (
     <div className="card w-96 shadow-xl">
       <figure className="">
-        <img src={props.Poster} alt={props.Title} />
+        <img src={props.poster} alt={props.title} />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{props.Title}</h2>
+        <h2 className="card-title">{props.title}</h2>
         <div className="flex">
-          <p>{props.Year}</p>
-          <span className="badge badge-outline">{props.Type}</span>
+          <p>{props.year}</p>
+          <span className="badge badge-outline">{props.type}</span>
         </div>
         {/* <div className="card-actions justify-end pt-2">
           <button className="btn btn-primary btn-xs">Details</button>
