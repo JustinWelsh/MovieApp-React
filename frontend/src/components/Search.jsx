@@ -6,13 +6,16 @@ const Search = (props) => {
 
     // 2. Setup the first fetch function; which is utilized on the "search button"
     const handleSearchClick = () => {
-      fetch(`${baseUrl}&s=${movieTitle}&page=1`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("initial call result", data)
-        props.setApiData(data)
-      })
-      console.log(movieTitle)
+        if(movieTitle) {
+            fetch(`${baseUrl}&s=${movieTitle}&page=1`)
+            .then(res => res.json())
+            .then(data => {
+              console.log("initial call result", data)
+              props.setApiData(data)
+            })
+            console.log(movieTitle)
+            setMovieTitle('')
+        }
     }
     // 5. setting state to the value of what the user is typing as they are typing (onChange), which is utilized in the "input" field
     const handleInputChange = (e) => {
