@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Modal from "./Modal";
 
 const MovieCard = (props) => {
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
@@ -35,34 +36,10 @@ const MovieCard = (props) => {
         </div> */}
 
 
-          {isModalOpen && (
-            <div className="modal-container">
-              <div
-              className="card bg-white"
-            >
-
-                <figure className="bg-black"><img src={movieDetailsData?.Poster} alt={movieDetailsData?.Title}/></figure>
-                <div className="card-body">
-                  <h2 className="card-title text-black">{movieDetailsData?.Title}</h2>
-                  <p>{movieDetailsData?.Ratings[1]?.value}</p>
-                  <p>{movieDetailsData?.Rated}</p>
-                  <div className="flex text-black text-sm">
-                    <p>{movieDetailsData?.Runtime}</p>
-                    <p>{movieDetailsData?.Genre}</p>
-                    <p>Watchlist</p>
-                  </div>
-                  <p className="pb-7">{movieDetailsData?.Plot}</p>
-                  <div className="text-sm">
-                    <p>Director: {movieDetailsData?.Director}</p>
-                    <p>Starring: {movieDetailsData?.Actors}</p>
-                  </div>
-                  <div className="card-actions justify-end">
-                    <button className="btn btn-primary" onClick={() => setIsModalOpen(false)}>Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          {isModalOpen && (<Modal 
+            movieDetailsData={movieDetailsData}
+            setIsModalOpen={setIsModalOpen}
+            />)}
 
         {/* The button to open modal */}
         <button
@@ -73,7 +50,7 @@ const MovieCard = (props) => {
             setIsModalOpen(true);
           }}
         >
-          new modal
+          Movie details
         </button>
       </div>
     </div>
