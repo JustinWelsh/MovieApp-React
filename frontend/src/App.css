@@ -40,19 +40,35 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 100vw;
     z-index: 999;
-}
+    
+    /* hides the modal*/
+    /* opacity: 0;  */
 
-/* .modal{
+    /* this allows us to click through the hidden modal */
+    /* pointer-events: none;  */
+
+    /* transition: opacity 0.2s ease; */
+
+}
+/* "show" class renders the modal */
+/* .modal-container.show{
+    pointer-events: auto;
+    opacity: 1;
+} */
+
+.my-modal{
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     padding: 30px 50px;
     width: 600px;
     max-width: 100%;
-} */
+    border-radius: 15px;
+}
 

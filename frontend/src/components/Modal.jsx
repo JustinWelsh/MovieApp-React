@@ -1,14 +1,16 @@
 const Modal = (props) => {
+    let modalToggle = props.isModalOpen ? "show" : null //place in container div for animation | may need to delete
+    
   return (
-    <div className="modal-container">
-      <div className="card bg-white">
-        <figure className="bg-black">
+    <div className={`modal-container`}>
+      <div className="my-modal">
+        <figure className="bg-black shadow-xl">
           <img
             src={props.movieDetailsData?.Poster}
             alt={props.movieDetailsData?.Title}
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body pb-0">
           <h2 className="card-title text-black">
             {props.movieDetailsData?.Title}
           </h2>
@@ -20,7 +22,7 @@ const Modal = (props) => {
             <p>Watchlist</p>
           </div>
           <p className="pb-7">{props.movieDetailsData?.Plot}</p>
-          <div className="text-sm">
+          <div className="text-sm pb-3">
             <p>Director: {props.movieDetailsData?.Director}</p>
             <p>Starring: {props.movieDetailsData?.Actors}</p>
           </div>

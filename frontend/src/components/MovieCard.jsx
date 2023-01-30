@@ -39,6 +39,7 @@ const MovieCard = (props) => {
           {isModalOpen && (<Modal 
             movieDetailsData={movieDetailsData}
             setIsModalOpen={setIsModalOpen}
+            isModalOpen={isModalOpen}
             />)}
 
         {/* The button to open modal */}
