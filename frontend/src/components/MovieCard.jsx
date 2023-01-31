@@ -6,7 +6,6 @@ const MovieCard = (props) => {
 
   // state to access more detailed data per MovieCard that is clicked on
   const [movieDetailsData, setMovieDetailsData] = useState(null);
-  // const [stateId, setStateId] = useState(props.movieId)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -31,10 +30,6 @@ const MovieCard = (props) => {
           <p>{props.year}</p>
           <span className="badge badge-outline">{props.type}</span>
         </div>
-        {/* <div className="card-actions justify-end pt-2">
-          <button className="btn btn-primary btn-xs">Details</button>
-        </div> */}
-
 
           {isModalOpen && (<Modal 
             movieDetailsData={movieDetailsData}
@@ -44,7 +39,6 @@ const MovieCard = (props) => {
 
         {/* The button to open modal */}
         <button
-          // htmlFor="my-modal-6"
           className="btn"
           onClick={() => {
             fetchMovieDetails();
