@@ -22,7 +22,7 @@ const MovieCard = (props) => {
 
   return (
     <div className="card w-96 shadow-xl">
-      <figure className="">
+      <figure className="h-2/3">
         <img src={props.poster} alt={props.title} />
       </figure>
       <div className="card-body">
