@@ -28,7 +28,7 @@ const Search = (props) => {
 
   return (
     <div className="w-1/2 py-5 my-5 ">
-        <label for="movie-input" className="relative top-8 left-3"><AiOutlineSearch /></label>
+        <label htmlFor="movie-input" className="relative top-8 left-3"><AiOutlineSearch /></label>
       <input
         type="search"
         id="movie-input"
