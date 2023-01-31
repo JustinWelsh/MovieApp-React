@@ -3,6 +3,8 @@ import "./App.css";
 import Search from "./components/Search";
 import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
+import { TbMovie } from 'react-icons/tb';
+
 
 function App() {
   // 1. set state to hold data from each search
@@ -12,7 +14,7 @@ function App() {
   const movies = apiData.Search?.map((movie) => (
     <MovieCard
       key={movie.imdbID}
-      movieId={movie.imdbID} // try to use for fetchMovieDetails call
+      movieId={movie.imdbID}
       title={movie.Title}
       poster={movie.Poster}
 
@@ -25,13 +27,21 @@ function App() {
       <div className="header">
         <Header />
       </div>
-      {/* change position */}
       <div className="search-bar">
         <Search setApiData={setApiData} />
       </div>
+
+      {!movies && (<div className="start-exploring-div">
+        <span className="text-9xl	"><TbMovie /></span>
+        <p>Start exploring</p>
+      </div>)}
+
+
       <div className="flex flex-wrap justify-center gap-10">
         {movies}
       </div>
+
+
     </div>
   );
 }
