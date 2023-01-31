@@ -1,3 +1,6 @@
+import { SiRottentomatoes } from 'react-icons/si';
+import { AiFillPlusCircle } from 'react-icons/ai';
+
 const Modal = (props) => {
     let modalToggle = props.isModalOpen ? "show" : null //place in container div for animation | may need to delete
   return (
@@ -13,17 +16,27 @@ const Modal = (props) => {
           <h2 className="card-title text-black">
             {props.movieDetailsData?.Title}
           </h2>
-          <p>{props.movieDetailsData?.Ratings[1]?.value}</p>
-          <p>{props.movieDetailsData?.Rated}</p>
-          <div className="flex text-black text-sm">
+          <div className="flex">
+            <p>{props.movieDetailsData?.Rated}</p>
+            <div className='flex items-center'>
+                <div className='text-red-600 text-xl'><SiRottentomatoes /></div>
+                <p className='pl-2'>{props.movieDetailsData?.Ratings[1].Value}</p>
+            </div>
+          </div>
+          <div className="flex text-black text-sm my-2">
             <p>{props.movieDetailsData?.Runtime}</p>
             <p>{props.movieDetailsData?.Genre}</p>
-            <p>Watchlist</p>
+            <div className='flex items-center'>
+                <div className='text-green-500 text-xl'><AiFillPlusCircle /></div>
+                <p>Watchlist</p>
+            </div>
           </div>
           <p className="pb-7">{props.movieDetailsData?.Plot}</p>
           <div className="text-sm pb-3">
-            <p>Director: {props.movieDetailsData?.Director}</p>
-            <p>Starring: {props.movieDetailsData?.Actors}</p>
+            <p>
+                <span className='text-black'>Director:</span> {props.movieDetailsData?.Director}</p>
+            <p>
+                <span className='text-black'>Starring:</span> {props.movieDetailsData?.Actors}</p>
           </div>
           <div className="card-actions justify-end">
             <button
