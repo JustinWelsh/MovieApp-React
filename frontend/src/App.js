@@ -32,8 +32,8 @@ function App() {
       </div>
 
       {!movies && (<div className="start-exploring-div">
-        <span className="text-9xl	"><TbMovie /></span>
-        <p>Start exploring</p>
+        <span className="text-9xl"><TbMovie /></span>
+        <p className="text-2xl">Start exploring</p>
       </div>)}
 
 
