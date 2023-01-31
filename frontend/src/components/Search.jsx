@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { AiOutlineSearch } from 'react-icons/ai';
+
 const Search = (props) => {
     // 3. create state to identify and set state to the value of what the user is typing to be used for our search-calls.
     const [movieTitle, setMovieTitle] = useState('') //input from the user
@@ -26,11 +28,12 @@ const Search = (props) => {
 
   return (
     <div className="w-1/2 py-5 my-5 ">
+        <span className="absolute top-14 left-60"><AiOutlineSearch /></span>
       <input
         type="text"
         id="movie-input"
         placeholder="Search for a movie"
-        className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg "
+        className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg pl-9"
         name="movie-input"
         onChange={handleInputChange}
         value={movieTitle}
