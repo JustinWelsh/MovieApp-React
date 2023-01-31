@@ -22,6 +22,9 @@ function App() {
       year={movie.Year}
     />
   ));
+  if (apiData.Error === "Movie not found!") {
+    console.log("movie not found!")
+  }
   return (
     <div className="container">
       <div className="header">
@@ -31,10 +34,15 @@ function App() {
         <Search setApiData={setApiData} />
       </div>
 
-      {!movies && (<div className="start-exploring-div">
-        <span className="text-9xl"><TbMovie /></span>
-        <p className="text-2xl">Start exploring</p>
-      </div>)}
+      {!movies && (
+        <div className="content-div">
+          <span className="text-9xl"><TbMovie /></span>
+          <p className="text-2xl">
+            {apiData.Error ?
+            'Unable to find what you are looking for. Please try another search.' :
+            'Start exploring'}
+          </p>
+        </div>)}
 
 
       <div className="flex flex-wrap justify-center gap-10">
