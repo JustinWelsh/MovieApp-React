@@ -2,15 +2,13 @@ import Search from "./Search";
 
 const Header = () => {
   return (
-    <div className="hero">
-      <div className=" text-center py-36">
-        <div className="text-white">
-          <h1 className="mb-5 text-6xl font-bold">Find your film</h1>
-          <a href="#"className="mb-5 font-bold">
+    <div className="hero my-hero">
+        <div className="my-hero-content">
+            <h1 className="mb-5 text-6xl ">Find your film</h1>
+            <a href="#"className="mb-5">
             My watchlist
-          </a>
+            </a>
         </div>
-      </div>
     </div>
   );
 };

@@ -20,6 +20,18 @@
     background-repeat: no-repeat;
     background-position: center; */
 }
+
+.my-hero{
+    text-align: center;
+    color: white;
+    padding: 8rem 0;
+    font-weight: 700;
+}
+.my-hero-content{
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem 3rem;
+    border-radius: 10px;
+}
 .search-bar{
     display: flex;
     justify-content: center;
