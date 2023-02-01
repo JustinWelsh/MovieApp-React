@@ -16,7 +16,7 @@ const Search = (props) => {
               props.setApiData(data)
             })
             console.log(movieTitle)
-            setMovieTitle('')
+            // setMovieTitle('')
         }
     }
     // 5. setting state to the value of what the user is typing as they are typing (onChange), which is utilized in the "input" field
@@ -27,18 +27,18 @@ const Search = (props) => {
 
 
   return (
-    <div className="w-1/2 py-5 my-5 ">
+    <div className="w-1/2 py-5 my-5">
         <label htmlFor="movie-input" className="relative top-8 left-3"><AiOutlineSearch /></label>
       <input
         type="search"
         id="movie-input"
         placeholder="Search for a movie"
-        className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg pl-9"
+        className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg px-9"
         name="movie-input"
         onChange={handleInputChange}
         value={movieTitle}
       ></input>
-      <button onClick={handleSearchClick} className="search-btn btn btn-ghost w-1/3 bg-slate-200 rounded-none rounded-r-lg">
+      <button onClick={handleSearchClick} className="search-btn btn btn-primary w-1/3 rounded-none rounded-r-lg">
         Search
       </button>
     </div>

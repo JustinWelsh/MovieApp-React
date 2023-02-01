@@ -37,7 +37,7 @@
     justify-content: center;
 
     position: relative;
-    bottom: 55px; /* 65px is in the middle of the header and the body*/
+    bottom: 80px; /* 80px is in the middle of the header and the body*/
 }
 
 
