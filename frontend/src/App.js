@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Search from "./components/Search";
+import Search from "./components/SearchBar";
 import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
@@ -11,24 +11,6 @@ import { router } from "./router";
 
 
 function App() {
-  // 1. set state to hold data from each search
-  const [apiData, setApiData] = useState({});
-  // 4. once data is set => mapping through state-data and creating a MovieCard
-  // also passing data through props to be accessed and displayed on each card.
-  const movies = apiData.Search?.map((movie) => (
-    <MovieCard
-      key={movie.imdbID}
-      movieId={movie.imdbID}
-      title={movie.Title}
-      poster={movie.Poster}
-
-      type={movie.Type}
-      year={movie.Year}
-    />
-  ));
-  if (apiData.Error === "Movie not found!") {
-    console.log("movie not found!")
-  }
   return (
     <>
       <RouterProvider router={router}/>
@@ -38,7 +20,7 @@ function App() {
           <Header />
         </div>
         <div className="search-bar">
-          <Search setApiData={setApiData} />
+          <SearchBar setApiData={setApiData} />
         </div>
 
         {!movies && (

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Search from "./Search";
+import Search from "./SearchBar";
 
 const Header = () => {
   return (
@@ -7,9 +7,6 @@ const Header = () => {
         <div className="hero my-hero">
             <div className="my-hero-content">
                 <h1 className="mb-5 text-6xl ">Find your film</h1>
-                {/* <a href="#"className="mb-5">
-                My watchlist
-                </a> */}
                 <Link to="/">
                 Home
                 </Link>
