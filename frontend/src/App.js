@@ -33,12 +33,6 @@ function App() {
             </p>
           </div>)}
 
-
-        <div className="flex flex-wrap justify-center gap-10">
-          {movies}
-        </div>
-
-
       </div> */}
     </>
   );
