@@ -4,7 +4,6 @@ import Modal from "./Modal";
 const MovieCard = (props) => {
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
 
-  // state to access more detailed data per MovieCard that is clicked on
   const [movieDetailsData, setMovieDetailsData] = useState(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -45,7 +44,7 @@ const MovieCard = (props) => {
             setIsModalOpen(true);
           }}
         >
-          Movie details
+          🎬 Movie details 🎬
         </button>
       </div>
     </div>
