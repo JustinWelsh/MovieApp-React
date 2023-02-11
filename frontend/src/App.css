@@ -37,14 +37,14 @@
     justify-content: center;
 
     position: relative;
-    bottom: 80px; /* 80px is in the middle of the header and the body*/
+    bottom: 33px; /* 80px is in the middle of the header and the body*/
 }
 
 
 .search-btn{
     /* levels input field and search-btn */
-    position: relative;
-    bottom: 1px;
+    /* position: relative;
+    bottom: 1px; */
 }
 
 .modal-container{
