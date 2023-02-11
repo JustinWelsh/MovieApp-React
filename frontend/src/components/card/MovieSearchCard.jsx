@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "../Modal";
+import MovieDetailsModal from "../MovieDetailsModal";
 
 const MovieSearchCard = (props) => {
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
@@ -30,7 +30,7 @@ const MovieSearchCard = (props) => {
           <span className="badge badge-outline">{props.type}</span>
         </div>
 
-          {isModalOpen && (<Modal 
+          {isModalOpen && (<MovieDetailsModal 
             movieDetailsData={movieDetailsData}
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}

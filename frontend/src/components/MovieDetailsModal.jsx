@@ -1,7 +1,7 @@
 import { SiRottentomatoes } from 'react-icons/si';
 import { AiFillPlusCircle } from 'react-icons/ai';
 
-const Modal = (props) => {
+const MovieDetailsModal = (props) => {
     let modalToggle = props.isModalOpen ? "show" : null //place in container div for animation | may need to delete
   return (
     <div className={`modal-container`}>
@@ -52,4 +52,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default MovieDetailsModal;
