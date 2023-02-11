@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MovieDetailsModal from "../MovieDetailsModal";
+import MovieDetailsModal from "../modal/MovieDetailsModal";
 
 const MovieSearchCard = (props) => {
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
