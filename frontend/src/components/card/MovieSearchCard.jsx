@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Modal from "./Modal";
+import Modal from "../Modal";
 
-const MovieCard = (props) => {
+const MovieSearchCard = (props) => {
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
 
   const [movieDetailsData, setMovieDetailsData] = useState(null);
@@ -50,4 +50,4 @@ const MovieCard = (props) => {
     </div>
   );
 };
-export default MovieCard;
+export default MovieSearchCard;

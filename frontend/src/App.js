@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Search from "./components/SearchBar";
-import MovieCard from "./components/MovieCard";
+import MovieSearchCard from "./components/card/MovieSearchCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
 
@@ -9,7 +9,7 @@ import { TbMovie } from 'react-icons/tb';
 function App() {
   const [apiData, setApiData] = useState({});
   const movies = apiData.Search?.map((movie) => (
-    <MovieCard
+    <MovieSearchCard
       key={movie.imdbID}
       movieId={movie.imdbID}
       title={movie.Title}
