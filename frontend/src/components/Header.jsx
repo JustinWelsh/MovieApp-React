@@ -1,4 +1,4 @@
-import Search from "./Search";
+import Search from "./SearchBar";
 
 const Header = () => {
   return (

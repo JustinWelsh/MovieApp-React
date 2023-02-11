@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Search from "./components/Search";
+import Search from "./components/SearchBar";
 import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
