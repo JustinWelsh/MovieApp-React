@@ -1,5 +1,5 @@
 import { SiRottentomatoes } from 'react-icons/si';
-import { AiFillPlusCircle } from 'react-icons/ai';
+import { PlusMinus } from '../swap/PlusMinus';
 
 const MovieDetailsModal = (props) => {
     let modalToggle = props.isModalOpen ? "show" : null //place in container div for animation | may need to delete
@@ -27,8 +27,9 @@ const MovieDetailsModal = (props) => {
             <p>{props.movieDetailsData?.Runtime}</p>
             <p>{props.movieDetailsData?.Genre}</p>
             <div className='flex items-center'>
-                <div className='text-green-500 text-xl'><AiFillPlusCircle /></div>
-                <p>Watchlist</p>
+              <PlusMinus >
+                <p className="relative left-3">Watchlist</p>
+              </PlusMinus >
             </div>
           </div>
           <p className="pb-7">{props.movieDetailsData?.Plot}</p>
