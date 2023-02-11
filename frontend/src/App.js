@@ -4,6 +4,7 @@ import Search from "./components/SearchBar";
 import MovieSearchCard from "./components/card/MovieSearchCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
+import { NavBar } from "./components/NavBar";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   }
   return (
     <div className="container">
+        <NavBar />
         <Header />
         <Search setApiData={setApiData} />
 
