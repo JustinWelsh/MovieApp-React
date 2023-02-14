@@ -55,6 +55,15 @@ transform: scale(1.02);
     bottom: 1px; */
 }
 
+.movie-card{
+    max-width: 18rem;
+    background-color: rgb(4,0,0);
+    color: white;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px #888888;
+
+}
+
 .modal-container{
     background-color: rgba(0,0,0,0.8);
     display: flex;

@@ -19,8 +19,8 @@ const MovieSearchCard = (props) => {
   };
 
   return (
-    <div className="card shadow-xl bg-blue-500">
-      <figure className="hover:cursor-pointer">
+    <div className="movie-card">
+      <figure className="hover:cursor-pointer w-full">
         <img 
           src={props.poster}
           alt={props.title}
@@ -29,20 +29,18 @@ const MovieSearchCard = (props) => {
             setIsModalOpen(true);
           }} />
       </figure>
-      <div className="">
         <div className="flex items-center justify-between p-2">
           <h2 className="card-title text-sm">{props.title}</h2>
           <p className="text-xs">{props.year}</p>
           {/* <span className="badge badge-outline">{props.type}</span> */}
         </div>
 
-          {isModalOpen && (<MovieDetailsModal 
-            movieDetailsData={movieDetailsData}
-            setIsModalOpen={setIsModalOpen}
-            isModalOpen={isModalOpen}
-            />)}
+        {isModalOpen && (<MovieDetailsModal 
+          movieDetailsData={movieDetailsData}
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+          />)}
       </div>
-    </div>
   );
 };
 export default MovieSearchCard;
