@@ -19,8 +19,8 @@ const MovieSearchCard = (props) => {
   };
 
   return (
-    <div className="card shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 bg-blue-500">
-      <figure>
+    <div className="card shadow-xl bg-blue-500">
+      <figure className="hover:cursor-pointer">
         <img 
           src={props.poster}
           alt={props.title}

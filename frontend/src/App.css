@@ -8,6 +8,13 @@
   /* add positon relative on container*/
   /* search-bar positon absolute */
 }
+/*CAUSES BUG */
+/* .growAnimation { 
+    transition: all .2s ease-in-out; 
+    }   
+.growAnimation:hover { 
+transform: scale(1.02); 
+} */
 
 .header{
     background-image: url("images/movie-wallpaper.jpeg");

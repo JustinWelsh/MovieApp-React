@@ -7,7 +7,7 @@ const Search = (props) => {
 
   const handleSearchClick = () => {
     if (movieTitle) {
-      fetch(`${baseUrl}&s=${movieTitle}&page=1`)
+      fetch(`${baseUrl}&type=movie&s=${movieTitle}&page=1`)
         .then((res) => res.json())
         .then((data) => {
           console.log("initial call result", data);

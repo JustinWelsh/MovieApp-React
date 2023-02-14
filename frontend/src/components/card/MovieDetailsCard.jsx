@@ -13,7 +13,7 @@ export function MovieDetailsCard(props) {
                         <div className="text-red-600 text-xl">
                             <SiRottentomatoes />
                             </div>
-                            <p className="pl-2">{props.movieDetailsData?.Ratings[1].Value}</p>
+                            <p className="pl-2">{props.movieDetailsData?.Ratings[1] ? props.movieDetailsData?.Ratings[1].Value : ""}</p>
                     </div>
                 </div>
 
