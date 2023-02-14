@@ -1,5 +1,3 @@
-import { SiRottentomatoes } from 'react-icons/si';
-import { PlusMinus } from '../swap/PlusMinus';
 import { MovieDetailsCard } from '../card/MovieDetailsCard';
 
 const MovieDetailsModal = (props) => {
