@@ -19,15 +19,21 @@ const MovieSearchCard = (props) => {
   };
 
   return (
-    <div className="card w-96 shadow-xl">
-      <figure className="h-2/3">
-        <img src={props.poster} alt={props.title} />
+    <div className="card shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 bg-blue-500">
+      <figure>
+        <img 
+          src={props.poster}
+          alt={props.title}
+          onClick={() => {
+            fetchMovieDetails();
+            setIsModalOpen(true);
+          }} />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{props.title}</h2>
-        <div className="flex">
-          <p>{props.year}</p>
-          <span className="badge badge-outline">{props.type}</span>
+      <div className="">
+        <div className="flex items-center justify-between p-2">
+          <h2 className="card-title text-sm">{props.title}</h2>
+          <p className="text-xs">{props.year}</p>
+          {/* <span className="badge badge-outline">{props.type}</span> */}
         </div>
 
           {isModalOpen && (<MovieDetailsModal 
@@ -35,17 +41,6 @@ const MovieSearchCard = (props) => {
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}
             />)}
-
-        {/* The button to open modal */}
-        <button
-          className="btn"
-          onClick={() => {
-            fetchMovieDetails();
-            setIsModalOpen(true);
-          }}
-        >
-          🎬 Movie details 🎬
-        </button>
       </div>
     </div>
   );
