@@ -40,7 +40,7 @@ function App() {
         </div>)}
 
 
-      <div className="flex flex-wrap justify-center gap-10">
+      <div className="flex flex-wrap justify-center gap-3">
         {movies}
       </div>
 
