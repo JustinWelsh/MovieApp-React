@@ -19,7 +19,7 @@ const MovieSearchCard = (props) => {
   };
 
   return (
-    <div className="movie-card">
+    <div className="movie-card-container">
       <figure className="hover:cursor-pointer">
         <img 
           src={props.poster}

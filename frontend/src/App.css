@@ -55,13 +55,19 @@ transform: scale(1.02);
     bottom: 1px; */
 }
 
-.movie-card{
+.movie-card-container{
     max-width: 18rem;
     background-color: rgb(4,0,0);
     color: white;
     border-radius: 1rem;
     box-shadow: 0 5px 10px #888888;
 
+}
+
+.details-card-container{
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px #201f1f;
 }
 
 .modal-container{
