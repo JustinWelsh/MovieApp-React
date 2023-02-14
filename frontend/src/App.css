@@ -65,6 +65,7 @@ transform: scale(1.02);
 }
 
 .details-card-container{
+    max-width: 56rem;
     background-color: white;
     border-radius: 1rem;
     box-shadow: 0 5px 10px #201f1f;

@@ -3,7 +3,7 @@ import { PlusMinus } from '../swap/PlusMinus';
 export function MovieDetailsCard(props) {
   return (
     <>
-        <div className="details-card-container  lg:card-side shadow-xl flex text-black">
+        <div className="details-card-container card lg:card-side shadow-xl flex text-black">
             <figure className="bg-black shadow-xl lg:w-full"><img src={props.movieDetailsData?.Poster} alt={props.movieDetailsData?.Title}/></figure>
             <div className="card-body">
                 <h2 className="card-title lg:text-3xl lg:py-8">{props.movieDetailsData?.Title}</h2>
