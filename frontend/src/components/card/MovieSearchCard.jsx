@@ -20,10 +20,11 @@ const MovieSearchCard = (props) => {
 
   return (
     <div className="movie-card">
-      <figure className="hover:cursor-pointer w-full">
+      <figure className="hover:cursor-pointer">
         <img 
           src={props.poster}
           alt={props.title}
+          className="rounded-t-2xl"
           onClick={() => {
             fetchMovieDetails();
             setIsModalOpen(true);
