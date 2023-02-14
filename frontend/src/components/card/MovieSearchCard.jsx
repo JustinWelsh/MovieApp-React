@@ -24,7 +24,7 @@ const MovieSearchCard = (props) => {
         <img 
           src={props.poster}
           alt={props.title}
-          className="rounded-t-2xl"
+          className="rounded-t-2xl max-h-96"
           onClick={() => {
             fetchMovieDetails();
             setIsModalOpen(true);
