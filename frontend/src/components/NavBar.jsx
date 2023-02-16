@@ -54,7 +54,6 @@ export function NavBar(props) {
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl" onClick={() => {
-          console.log("Home page")
           props.setOnWatchlistPage(false)
         }}>MovieApp.</a>
       </div>
@@ -92,7 +91,6 @@ export function NavBar(props) {
       </div>
       <div className="navbar-end">
         <a className="btn" onClick={() => {
-          console.log("Watchlist page")
           props.setOnWatchlistPage(prevState => !prevState)
         }}>{props.onWatchlistPage ? "Search" : "My Watchlist"}</a>
       </div>
