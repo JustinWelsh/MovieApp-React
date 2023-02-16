@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const Search = (props) => {
+const SearchBar = (props) => {
   const [movieTitle, setMovieTitle] = useState(""); //input from the user
   const baseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}`;
 
@@ -47,4 +47,4 @@ const Search = (props) => {
   );
 };
 
-export default Search;
+export default SearchBar;
