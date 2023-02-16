@@ -22,7 +22,7 @@ const MovieSearchCard = (props) => {
     <div className="movie-card-container">
       <figure className="hover:cursor-pointer">
         <img 
-          src={props.poster}
+          src={props.poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" : props.poster}
           alt={props.title}
           className="rounded-t-2xl max-h-96"
           onClick={() => {

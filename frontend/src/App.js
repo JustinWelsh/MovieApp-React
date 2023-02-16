@@ -10,6 +10,8 @@ import { NavBar } from "./components/NavBar";
 function App() {
   const [apiData, setApiData] = useState({});
   const [onWatchlistPage, setOnWatchlistPage] = useState(false)
+  const [myWatchlist, setMyWatchlist] = useState([{}])
+  // console.log(myWatchlist)
   const searchedMovies = apiData.Search?.map((movie) => (
     <MovieSearchCard
       key={movie.imdbID}
@@ -19,6 +21,8 @@ function App() {
 
       type={movie.Type}
       year={movie.Year}
+
+      setMyWatchlist={setMyWatchlist}
     />
   ));
   if (apiData.Error === "Movie not found!") {
