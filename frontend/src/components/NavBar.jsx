@@ -1,4 +1,4 @@
-export function NavBar() {
+export function NavBar(props) {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -88,7 +88,10 @@ export function NavBar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">My Watchlist</a>
+        <a className="btn" onClick={() => {
+          console.log("connected")
+          props.setOnWatchlistPage(true)
+        }}>My Watchlist</a>
       </div>
     </div>
   );

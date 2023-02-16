@@ -9,6 +9,7 @@ import { NavBar } from "./components/NavBar";
 
 function App() {
   const [apiData, setApiData] = useState({});
+  const [onWatchlistPage, setOnWatchlistPage] = useState(false)
   const movies = apiData.Search?.map((movie) => (
     <MovieSearchCard
       key={movie.imdbID}
@@ -25,8 +26,8 @@ function App() {
   }
   return (
     <div className="container">
-        <NavBar />
-        <Header />
+        <NavBar setOnWatchlistPage={setOnWatchlistPage} />
+        <Header onWatchlistPage={onWatchlistPage} />
         <Search setApiData={setApiData} />
 
       {!movies && (
