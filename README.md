@@ -7,7 +7,6 @@
 - OMDb API
 
 ## React concepts implemented
-
 - Components
 - jsx
 - State management
