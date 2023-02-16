@@ -19,7 +19,7 @@ const MovieSearchCard = (props) => {
   };
 
   return (
-    <div className="movie-card-container">
+    <div className="movie-card-container w-60	">
       <figure className="hover:cursor-pointer">
         <img 
           src={props.poster === "N/A" ? "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" : props.poster}
@@ -31,8 +31,8 @@ const MovieSearchCard = (props) => {
           }} />
       </figure>
         <div className="flex items-center justify-between p-2">
-          <h2 className="card-title text-sm">{props.title}</h2>
-          <p className="text-xs">{props.year}</p>
+          <h2 className="card-title text-xs w-5/6">{props.title}</h2>
+          <p className="text-[10px]">{props.year}</p>
           {/* <span className="badge badge-outline">{props.type}</span> */}
         </div>
 
