@@ -10,7 +10,7 @@ import { NavBar } from "./components/NavBar";
 function App() {
   const [apiData, setApiData] = useState({});
   const [onWatchlistPage, setOnWatchlistPage] = useState(false)
-  const movies = apiData.Search?.map((movie) => (
+  const searchedMovies = apiData.Search?.map((movie) => (
     <MovieSearchCard
       key={movie.imdbID}
       movieId={movie.imdbID}
@@ -33,7 +33,7 @@ function App() {
         <Header onWatchlistPage={onWatchlistPage} />
         {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
 
-      {!movies && (
+      {!searchedMovies && (
         <div className="content-div">
           <span className="text-9xl"><TbMovie /></span>
           <p className="text-2xl">
@@ -44,10 +44,11 @@ function App() {
           </p>
         </div>)}
 
-
+      {!onWatchlistPage && 
       <div className="flex flex-wrap justify-center gap-3">
-        {movies}
-      </div>
+        {searchedMovies}
+      </div>}
+    
 
 
     </div>
