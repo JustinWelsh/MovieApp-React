@@ -53,7 +53,10 @@ export function NavBar(props) {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">MovieApp.</a>
+        <a className="btn btn-ghost normal-case text-xl" onClick={() => {
+          console.log("Home page")
+          props.setOnWatchlistPage(false)
+        }}>MovieApp.</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -89,9 +92,9 @@ export function NavBar(props) {
       </div>
       <div className="navbar-end">
         <a className="btn" onClick={() => {
-          console.log("connected")
-          props.setOnWatchlistPage(true)
-        }}>My Watchlist</a>
+          console.log("Watchlist page")
+          props.setOnWatchlistPage(prevState => !prevState)
+        }}>{props.onWatchlistPage ? "Search" : "My Watchlist"}</a>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Search from "./components/SearchBar";
+import SearchBar from "./components/SearchBar";
 import MovieSearchCard from "./components/card/MovieSearchCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
@@ -26,16 +26,20 @@ function App() {
   }
   return (
     <div className="container">
-        <NavBar setOnWatchlistPage={setOnWatchlistPage} />
+        <NavBar
+          setOnWatchlistPage={setOnWatchlistPage}
+          onWatchlistPage={onWatchlistPage}
+          />
         <Header onWatchlistPage={onWatchlistPage} />
-        <Search setApiData={setApiData} />
+        {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
 
       {!movies && (
         <div className="content-div">
           <span className="text-9xl"><TbMovie /></span>
           <p className="text-2xl">
             {apiData.Error ?
-            'Unable to find what you are looking for. Please try another search.' :
+            'Unable to find what you are looking for. Please try another search.' : onWatchlistPage ?
+            'Watchlist is empty' :
             'Start exploring'}
           </p>
         </div>)}
