@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
 import { NavBar } from "./components/NavBar";
 import { Watchlist } from "./components/Watchlist";
+import EmptyPageContent from "./components/EmptyPageContent"
 
 
 function App() {
@@ -22,6 +23,21 @@ function App() {
       year={movie.Year}
     />
   ));
+
+  const watchlist = JSON.parse(localStorage.getItem("watchlist")); //parsing of js
+  const watchlistMovies = watchlist?.map((movie) => (
+      <MovieSearchCard
+        key={movie.imdbID}
+        movieId={movie.imdbID}
+        title={movie.Title}
+        poster={movie.Poster}
+  
+        type={movie.Type}
+        year={movie.Year}
+      />
+  ))
+
+
   if (apiData.Error === "Movie not found!") {
     console.log("movie not found!")
   }
@@ -34,27 +50,27 @@ function App() {
         <Header onWatchlistPage={onWatchlistPage} />
         {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
 
-      {!searchedMovies && (
-        <div className="content-div">
-          <span className="text-9xl"><TbMovie /></span>
-          <p className="text-2xl">
+      {!onWatchlistPage && (
+        searchedMovies ? 
+          <div className="flex flex-wrap justify-center gap-3">
+            {searchedMovies}
+          </div> :
+          <EmptyPageContent> 
             {apiData.Error ?
-            'Unable to find what you are looking for. Please try another search.' : onWatchlistPage ?
-            'Watchlist is empty' :
-            'Start exploring'}
-          </p>
-        </div>)}
+              'Unable to find what you are looking for. Please try another search.' : 'Start exploring'}
+          </EmptyPageContent>
+      )}
 
-      {onWatchlistPage ?
-      <div className="flex flex-wrap justify-center gap-3 py-5">
-        <Watchlist />
-      </div> :
-      <div className="flex flex-wrap justify-center gap-3">
-        {searchedMovies}
-      </div>}
-    
-
-
+      {onWatchlistPage && (
+        watchlistMovies ? 
+          <div className="flex flex-wrap justify-center gap-3 py-5">
+            {watchlistMovies}
+          </div> : 
+          <EmptyPageContent> 
+            Watchlist is empty
+          </EmptyPageContent>
+      )}
+  
     </div>
   );
 }
