@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import MovieSearchCard from "./components/card/MovieSearchCard";
 import Header from "./components/Header";
 import { TbMovie } from 'react-icons/tb';
 import { NavBar } from "./components/NavBar";
+import { Watchlist } from "./components/Watchlist";
 
 
 function App() {
   const [apiData, setApiData] = useState({});
   const [onWatchlistPage, setOnWatchlistPage] = useState(false)
-  const [myWatchlist, setMyWatchlist] = useState([{}])
-  // console.log(myWatchlist)
   const searchedMovies = apiData.Search?.map((movie) => (
     <MovieSearchCard
       key={movie.imdbID}
@@ -21,8 +20,6 @@ function App() {
 
       type={movie.Type}
       year={movie.Year}
-
-      setMyWatchlist={setMyWatchlist}
     />
   ));
   if (apiData.Error === "Movie not found!") {
@@ -48,7 +45,10 @@ function App() {
           </p>
         </div>)}
 
-      {!onWatchlistPage && 
+      {onWatchlistPage ?
+      <div className="flex flex-wrap justify-center gap-3">
+        <Watchlist />
+      </div> :
       <div className="flex flex-wrap justify-center gap-3">
         {searchedMovies}
       </div>}

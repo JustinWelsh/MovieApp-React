@@ -1,6 +1,21 @@
 import { SiRottentomatoes } from 'react-icons/si';
-import { PlusMinus } from '../swap/PlusMinus';
+import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 export function MovieDetailsCard(props) {
+    const handleClick = () => {
+        const watchlist = JSON.parse(localStorage.getItem("watchlist")); //getting data
+        if(!watchlist) {
+            localStorage.setItem(
+                "watchlist",
+                JSON.stringify([props.movieDetailsData])
+                );
+            } else {
+                localStorage.setItem(
+                    "watchlist",
+                    JSON.stringify([...watchlist, props.movieDetailsData])
+                    );
+        }
+    }
+        
   return (
     <>
         <div className="details-card-container card lg:max-w-4xl lg:card-side shadow-xl flex text-black">
@@ -20,10 +35,15 @@ export function MovieDetailsCard(props) {
                 <div className="flex text-slate-500 text-sm my-2">
                     <p>{props.movieDetailsData?.Runtime}</p>
                     <p>{props.movieDetailsData?.Genre}</p>
-                    <div className="flex items-center">
-                        <PlusMinus>
-                        <p className="relative left-3">Watchlist</p>
-                        </PlusMinus>
+                    <div className="flex items-center"
+                    onClick={handleClick}>
+                        {/* <PlusMinus> */}
+                            <button className="btn relative left-3">
+                                <div className="text-green-500 text-xl relative right-2">
+                                    <AiFillPlusCircle />
+                                </div> Watchlist
+                            </button>
+                        {/* </PlusMinus> */}
                     </div>
                 </div>
 
