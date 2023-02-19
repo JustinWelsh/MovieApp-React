@@ -38,10 +38,11 @@ export function MovieDetailsCard(props) {
                     <div className="flex items-center"
                     onClick={handleClick}>
                         {/* <PlusMinus> */}
-                            <button className="btn relative left-3">
-                                <div className="text-green-500 text-xl relative right-2">
+                            <button className="flex">
+                                <div className="text-green-500 text-lg">
                                     <AiFillPlusCircle />
-                                </div> Watchlist
+                                </div> 
+                                Watchlist
                             </button>
                         {/* </PlusMinus> */}
                     </div>

@@ -46,7 +46,7 @@ function App() {
         </div>)}
 
       {onWatchlistPage ?
-      <div className="flex flex-wrap justify-center gap-3">
+      <div className="flex flex-wrap justify-center gap-3 py-5">
         <Watchlist />
       </div> :
       <div className="flex flex-wrap justify-center gap-3">

@@ -23,7 +23,7 @@ const SearchBar = (props) => {
 
   return (
     <div className="search-bar">
-      <div className="search-bar w-1/2 my-10 bg-red-200">
+      <div className="search-bar w-1/2 mt-10 bg-red-200">
         <label htmlFor="movie-input" className="relative top-4 left-7">
           <AiOutlineSearch />
         </label>
