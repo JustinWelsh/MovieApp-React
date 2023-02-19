@@ -35,16 +35,15 @@ export function MovieDetailsCard(props) {
                 <div className="flex text-slate-500 text-sm my-2">
                     <p>{props.movieDetailsData?.Runtime}</p>
                     <p>{props.movieDetailsData?.Genre}</p>
-                    <div className="flex items-center"
+                    <div 
+                    className="flex items-center"
                     onClick={handleClick}>
-                        {/* <PlusMinus> */}
-                            <button className="flex">
-                                <div className="text-green-500 text-lg">
-                                    <AiFillPlusCircle />
-                                </div> 
-                                Watchlist
-                            </button>
-                        {/* </PlusMinus> */}
+                        <button className="flex">
+                            <div className="text-green-500 text-lg">
+                                <AiFillPlusCircle />
+                            </div> 
+                            Watchlist
+                        </button>
                     </div>
                 </div>
 
