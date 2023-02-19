@@ -9,9 +9,9 @@
 ## React concepts implemented
 - Components
 - jsx
-- State management
+- useState 
 - props
 - Reusability
-    - React [children](frontend/src/components/swap/PlusMinus.jsx)
+    - React children
 - conditional rendering
 - mapping through & rendering API data
