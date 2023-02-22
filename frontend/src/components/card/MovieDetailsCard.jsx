@@ -1,21 +1,27 @@
 import { SiRottentomatoes } from 'react-icons/si';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 export function MovieDetailsCard(props) {
+
+
     const handleClick = () => {
-        const watchlist = JSON.parse(localStorage.getItem("watchlist")); //getting data
-        if(!watchlist) {
+        const watchlistData = JSON.parse(localStorage.getItem("watchlist")); //getting data
+        
+        const filteredWatchlist = watchlistData?.filter(movie => movie.imdbID !== props.movieDetailsData.imdbID)
+        const movieToDelete = watchlistData?.filter(movie => movie.imdbID === props.movieDetailsData.imdbID)
+
+        // if watchlist doesn't exist, create it
+        if(!watchlistData) {
             localStorage.setItem(
                 "watchlist",
                 JSON.stringify([props.movieDetailsData])
                 );
             } else {
                 localStorage.setItem(
-                    "watchlist",
-                    JSON.stringify([...watchlist, props.movieDetailsData])
-                    );
-        }
+                        "watchlist", JSON.stringify([...watchlistData, props.movieDetailsData]));
+            }
+
     }
-        
+    
   return (
     <>
         <div className="details-card-container card lg:max-w-4xl lg:card-side shadow-xl flex text-black">
@@ -27,8 +33,8 @@ export function MovieDetailsCard(props) {
                     <div className="flex items-center">
                         <div className="text-red-600 text-xl">
                             <SiRottentomatoes />
-                            </div>
-                            <p className="pl-2">{props.movieDetailsData?.Ratings[1] ? props.movieDetailsData?.Ratings[1].Value : ""}</p>
+                        </div>
+                        <p className="pl-2">{props.movieDetailsData?.Ratings[1] ? props.movieDetailsData?.Ratings[1].Value : ""}</p>
                     </div>
                 </div>
 
