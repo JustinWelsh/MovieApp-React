@@ -1,13 +1,16 @@
 import { SiRottentomatoes } from 'react-icons/si';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 export function MovieDetailsCard(props) {
 
+    // const [toggle, setToggle] = useState() 
+    const watchlistData = JSON.parse(localStorage.getItem("watchlist")); //getting data
 
     const handleClick = () => {
-        const watchlistData = JSON.parse(localStorage.getItem("watchlist")); //getting data
         
         const filteredWatchlist = watchlistData?.filter(movie => movie.imdbID !== props.movieDetailsData.imdbID)
-        const movieToDelete = watchlistData?.filter(movie => movie.imdbID === props.movieDetailsData.imdbID)
+        const movieClickedOn = watchlistData?.filter(movie => movie.imdbID === props.movieDetailsData.imdbID)
+
 
         // if watchlist doesn't exist, create it
         if(!watchlistData) {
@@ -16,10 +19,18 @@ export function MovieDetailsCard(props) {
                 JSON.stringify([props.movieDetailsData])
                 );
             } else {
-                localStorage.setItem(
+                if(movieClickedOn[0]) {
+                    movieClickedOn[0].watchlist = false
+                    console.log("Inside 'if'", props.movieDetailsData.watchlist)
+                    localStorage.setItem(
+                        "watchlist", JSON.stringify(filteredWatchlist));
+                } else {
+                    props.movieDetailsData.watchlist = true
+                    console.log("inside 'else'", props.movieDetailsData.watchlist)
+                    localStorage.setItem(
                         "watchlist", JSON.stringify([...watchlistData, props.movieDetailsData]));
+                    }
             }
-
     }
     
   return (
@@ -45,9 +56,14 @@ export function MovieDetailsCard(props) {
                     className="flex items-center"
                     onClick={handleClick}>
                         <button className="flex">
+                            {!props.movieDetailsData?.watchlist ? 
                             <div className="text-green-500 text-lg">
                                 <AiFillPlusCircle />
-                            </div> 
+                            </div> :
+                            <div className="text-slate-500 text-lg">
+                                <AiFillMinusCircle />
+                            </div>
+                            } 
                             Watchlist
                         </button>
                     </div>

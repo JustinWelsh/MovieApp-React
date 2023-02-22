@@ -14,6 +14,7 @@ const MovieSearchCard = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        data.watchlist = false // added this the use for toggling the plus/minus-icon
         setMovieDetailsData(data);
       });
   };
