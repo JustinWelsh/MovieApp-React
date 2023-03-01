@@ -41,7 +41,7 @@ const SearchBar = (props) => {
           <button
             type="submit"
             // disabled={movieTitle ? false : true}
-            className="search-btn btn-primary w-1/3 rounded-none rounded-r-lg"
+            className="search-btn btn btn-primary w-1/3 rounded-none rounded-r-lg"
           >
             Search
           </button>

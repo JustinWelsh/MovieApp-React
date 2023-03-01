@@ -43,7 +43,7 @@ transform: scale(1.02);
     display: flex;
     justify-content: center;
     min-width: 400px;
-
+    margin-bottom: 1rem;
     /* position: relative;
     bottom: 60px; */
 }
@@ -70,12 +70,14 @@ transform: scale(1.02);
 }
 
 .movie-card-container{
-    max-width: 18rem;
-    background-color: rgb(4,0,0);
     color: white;
     border-radius: 1rem;
     box-shadow: 0 5px 10px #888888;
 
+}
+.movie-card{
+    max-width: 16rem;
+    height: 16rem;
 }
 
 .details-card-container{
