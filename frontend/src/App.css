@@ -39,21 +39,34 @@ transform: scale(1.02);
     padding: 1.5rem 3rem;
     border-radius: 10px;
 }
-.search-bar{
+.search-bar-container{
     display: flex;
     justify-content: center;
     min-width: 400px;
 
-    position: relative;
-    bottom: 33px; /* 80px is in the middle of the header and the body*/
+    /* position: relative;
+    bottom: 60px; */
 }
+.search-bar{
+    border: 2px solid lightgray;
+    border-radius: .5rem;
+    padding-left: .3rem;
 
-
+}
+.search-input{
+    padding: .3rem;
+    outline: none;
+}
+.search-input:focus{
+    /* background-color: red; */
+}
 .search-btn{
     /* levels input field and search-btn */
     /* position: relative;
     bottom: 1px; */
     padding: .7rem;
+    border: 2px solid lightgray;
+
 }
 
 .movie-card-container{

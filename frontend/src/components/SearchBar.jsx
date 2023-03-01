@@ -23,23 +23,24 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className="search-bar">
-      <div className="search-bar w-1/2 mt-10 bg-red-200">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="movie-input" className="relative top-8 left-3">
-            <AiOutlineSearch />
-          </label>
+    <div className="search-bar-container">
+      <div className="search-bar w-1/2">
+        <form 
+        onSubmit={handleSubmit}
+        className="flex"
+        >
+          <div className="self-center"><AiOutlineSearch /></div>
           <input
             type="search"
             id="movie-input"
             placeholder="Search for a movie"
-            className="input input-bordered w-2/3 bg-white rounded-none rounded-l-lg px-9"
+            className="search-input w-2/3 bg-white rounded-none rounded-l-lg"
             name="movie-input"
             onChange={handleInputChange}
           ></input>
           <button
             type="submit"
-            disabled={movieTitle ? false : true}
+            // disabled={movieTitle ? false : true}
             className="search-btn btn-primary w-1/3 rounded-none rounded-r-lg"
           >
             Search
