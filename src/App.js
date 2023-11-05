@@ -3,54 +3,48 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
-import EmptyPageContent from "./components/EmptyPageContent";
 import MovieCard from "./components/ui/card/MovieCard";
 import MovieCarousel from "./components/common/carousel/MovieCarousel";
+import {
+  fetchPopularMovies,
+  fetchTrendingMovies,
+} from "./services/MovieService";
 
 function App() {
-  const [apiData, setApiData] = useState({});
-  const [popularMovies, setPopularMovies] = useState({});
-  const [onWatchlistPage, setOnWatchlistPage] = useState(false);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
-      },
+    const fetchData = async () => {
+      try {
+        const popularData = await fetchPopularMovies();
+        const trendingData = await fetchTrendingMovies();
+        setPopularMovies(popularData);
+        console.log("trendingData", trendingData);
+        setTrendingMovies(trendingData);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     };
 
-    fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setPopularMovies(response.results);
-      })
-      .catch((err) => console.error(err));
-
-    console.log(" EFFECT popularMovies: ", popularMovies);
+    fetchData(); // Call the async fetchData function
   }, []);
 
-  console.log("popularMovies: ", popularMovies);
-
   const popularMovieCards = popularMovies.map((movie) => (
-    <MovieCard movie={movie} />
+    <MovieCard key={movie.id} movie={movie} />
+  ));
+  const trendingMovieCards = trendingMovies.map((movie) => (
+    <MovieCard key={movie.id} movie={movie} />
   ));
 
   return (
     <div className="container">
-      <NavBar
-        setOnWatchlistPage={setOnWatchlistPage}
-        onWatchlistPage={onWatchlistPage}
-      />
-      <Header onWatchlistPage={onWatchlistPage} />
-      {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
+      <NavBar />
+      <Header />
       <h2 className="text-4xl p-3">Popular Movies</h2>
       <MovieCarousel>{popularMovieCards}</MovieCarousel>
+      <h2 className="text-4xl p-3">Trending</h2>
+      <MovieCarousel>{trendingMovieCards}</MovieCarousel>
     </div>
   );
 }
