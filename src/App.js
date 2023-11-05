@@ -5,6 +5,7 @@ import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
 import EmptyPageContent from "./components/EmptyPageContent";
 import MovieCard from "./components/ui/card/MovieCard";
+import MovieCarousel from "./components/common/carousel/MovieCarousel";
 
 function App() {
   const [apiData, setApiData] = useState({});
@@ -49,9 +50,7 @@ function App() {
       <Header onWatchlistPage={onWatchlistPage} />
       {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
       <h2 className="text-4xl p-3">Popular Movies</h2>
-      <div className="flex flex-wrap justify-center gap-5">
-        {popularMovieCards}
-      </div>
+      <MovieCarousel>{popularMovieCards}</MovieCarousel>
     </div>
   );
 }
