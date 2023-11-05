@@ -2,19 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, 
+html,
 body {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
-body{
-    background: #141414;
-    border: 3px solid blue;
-
+body {
+  background: #141414;
 }
