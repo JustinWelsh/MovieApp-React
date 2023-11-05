@@ -1,74 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import MovieSearchCard from "./components/card/MovieSearchCard";
-import Header from "./components/Header";
-import { NavBar } from "./components/NavBar";
-import EmptyPageContent from "./components/EmptyPageContent"
-
+import Header from "./components/layout/Header";
+import { NavBar } from "./components/layout/NavBar";
+import EmptyPageContent from "./components/EmptyPageContent";
+import MovieCard from "./components/ui/card/MovieCard";
 
 function App() {
   const [apiData, setApiData] = useState({});
-  const [onWatchlistPage, setOnWatchlistPage] = useState(false)
-  const searchedMovies = apiData.Search?.map((movie) => (
-    <MovieSearchCard
-      key={movie.imdbID}
-      movieId={movie.imdbID}
-      title={movie.Title}
-      poster={movie.Poster}
+  const [popularMovies, setPopularMovies] = useState({});
+  const [onWatchlistPage, setOnWatchlistPage] = useState(false);
 
-      type={movie.Type}
-      year={movie.Year}
-    />
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
+      },
+    };
+
+    fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setPopularMovies(response.results);
+      })
+      .catch((err) => console.error(err));
+
+    console.log(" EFFECT popularMovies: ", popularMovies);
+  }, []);
+
+  console.log("popularMovies: ", popularMovies);
+
+  const popularMovieCards = popularMovies.map((movie) => (
+    <MovieCard movie={movie} />
   ));
 
-  const watchlist = JSON.parse(localStorage.getItem("watchlist")); //parsing of js
-  const watchlistMovies = watchlist?.map((movie) => (
-      <MovieSearchCard
-        key={movie.imdbID}
-        movieId={movie.imdbID}
-        title={movie.Title}
-        poster={movie.Poster}
-  
-        type={movie.Type}
-        year={movie.Year}
-      />
-  ))
-
-
-  if (apiData.Error === "Movie not found!") {
-    console.log("movie not found!")
-  }
   return (
     <div className="container">
-        <NavBar
-          setOnWatchlistPage={setOnWatchlistPage}
-          onWatchlistPage={onWatchlistPage}
-          />
-        <Header onWatchlistPage={onWatchlistPage} />
-        {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
-
-      {!onWatchlistPage && (
-        searchedMovies ? 
-          <div className="flex flex-wrap justify-center gap-3">
-            {searchedMovies}
-          </div> :
-          <EmptyPageContent> 
-            {apiData.Error ?
-              'Unable to find what you are looking for. Please try another search.' : 'Start exploring'}
-          </EmptyPageContent>
-      )}
-
-      {onWatchlistPage && (
-        watchlistMovies ? 
-          <div className="flex flex-wrap justify-center gap-3 py-5">
-            {watchlistMovies}
-          </div> : 
-          <EmptyPageContent> 
-            Watchlist is empty
-          </EmptyPageContent>
-      )}
-  
+      <NavBar
+        setOnWatchlistPage={setOnWatchlistPage}
+        onWatchlistPage={onWatchlistPage}
+      />
+      <Header onWatchlistPage={onWatchlistPage} />
+      {!onWatchlistPage && <SearchBar setApiData={setApiData} />}
+      <h2 className="text-4xl p-3">Popular Movies</h2>
+      <div className="flex flex-wrap justify-center gap-5">
+        {popularMovieCards}
+      </div>
     </div>
   );
 }
