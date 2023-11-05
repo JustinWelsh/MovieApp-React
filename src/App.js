@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
 import MovieCard from "./components/ui/card/MovieCard";
-import MovieCarousel from "./components/common/carousel/MovieCarousel";
+import MovieCarousel from "./components/ui/MovieCarousel";
 import { fetchPopularMovies, fetchTrendingAll } from "./services/MovieService";
 
 function App() {
