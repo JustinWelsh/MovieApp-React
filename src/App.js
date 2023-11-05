@@ -29,7 +29,7 @@ function App() {
   const popularMovieCards = popularMovies.map((movie) => (
     <MovieCard key={movie.id} movie={movie} />
   ));
-  const trendingMovieCards = trendingAll.map((movie) => (
+  const trendingAllCards = trendingAll.map((movie) => (
     <MovieCard key={movie.id} movie={movie} />
   ));
 
@@ -37,10 +37,10 @@ function App() {
     <div className="container">
       <NavBar />
       <Header />
+      <h2 className="text-4xl p-3">Trending</h2>
+      <MovieCarousel>{trendingAllCards}</MovieCarousel>
       <h2 className="text-4xl p-3">Popular Movies</h2>
       <MovieCarousel>{popularMovieCards}</MovieCarousel>
-      <h2 className="text-4xl p-3">Trending</h2>
-      <MovieCarousel>{trendingMovieCards}</MovieCarousel>
     </div>
   );
 }

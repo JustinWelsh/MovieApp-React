@@ -4,7 +4,7 @@ export async function fetchPopularMovies() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
+        Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN_TMDB}`,
       },
     };
     const response = await fetch(
@@ -28,7 +28,7 @@ export async function fetchTrendingAll() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
+        Authorization: `Bearer ${process.env.REACT_APP_ACCESS_TOKEN_TMDB}`,
       },
     };
     const response = await fetch(
@@ -41,7 +41,7 @@ export async function fetchTrendingAll() {
     }
 
     const data = await response.json();
-    //  console.log(data.results);
+    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Error:", error);
