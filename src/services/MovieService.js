@@ -15,7 +15,7 @@ export async function fetchPopularMovies() {
       throw new Error("Network response was not ok");
     }
     const data = await response.json();
-    //  console.log("SERVICE: ", data.results);
+    // console.log("SERVICE: ", data.results);
     return data.results;
   } catch (error) {
     throw error;

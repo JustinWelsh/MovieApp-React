@@ -1,4 +1,5 @@
 import React from "react";
+import MovieModal from "../MovieModal";
 
 function MovieCard({ movie }) {
   const moviePoster = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
