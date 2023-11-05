@@ -5,23 +5,19 @@ import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
 import MovieCard from "./components/ui/card/MovieCard";
 import MovieCarousel from "./components/common/carousel/MovieCarousel";
-import {
-  fetchPopularMovies,
-  fetchTrendingMovies,
-} from "./services/MovieService";
+import { fetchPopularMovies, fetchTrendingAll } from "./services/MovieService";
 
 function App() {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingAll, setTrendingAll] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const popularData = await fetchPopularMovies();
-        const trendingData = await fetchTrendingMovies();
+        const trendingData = await fetchTrendingAll();
         setPopularMovies(popularData);
-        console.log("trendingData", trendingData);
-        setTrendingMovies(trendingData);
+        setTrendingAll(trendingData);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -33,7 +29,7 @@ function App() {
   const popularMovieCards = popularMovies.map((movie) => (
     <MovieCard key={movie.id} movie={movie} />
   ));
-  const trendingMovieCards = trendingMovies.map((movie) => (
+  const trendingMovieCards = trendingAll.map((movie) => (
     <MovieCard key={movie.id} movie={movie} />
   ));
 

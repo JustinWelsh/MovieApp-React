@@ -22,16 +22,15 @@ export async function fetchPopularMovies() {
   }
 }
 
-export async function fetchTrendingMovies() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
-    },
-  };
-
+export async function fetchTrendingAll() {
   try {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN_TMDB}`,
+      },
+    };
     const response = await fetch(
       "https://api.themoviedb.org/3/trending/all/day?language=en-US",
       options
@@ -42,10 +41,11 @@ export async function fetchTrendingMovies() {
     }
 
     const data = await response.json();
-    console.log(data.results);
+    //  console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Error:", error);
     throw error; // Re-throw the error for higher-level error handling
   }
 }
+fetchTrendingAll();
