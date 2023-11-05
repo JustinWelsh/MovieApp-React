@@ -41,7 +41,7 @@ export async function fetchTrendingAll() {
     }
 
     const data = await response.json();
-    console.log(data.results);
+    // console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Error:", error);
