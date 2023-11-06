@@ -28,7 +28,7 @@ function App() {
       }
     };
 
-    fetchData(); // Call the async fetchData function
+    fetchData();
   }, []);
 
   const handleMovieClick = (movie) => {
