@@ -43,7 +43,7 @@ export function NavBar(props) {
       <NavbarContent as="div" className="items-center" justify="end">
         <Input
           classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
+            base: "sm:max-w-[15rem] h-10",
             mainWrapper: "h-full",
             input: "text-small",
             inputWrapper:
