@@ -6,26 +6,27 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Card,
-  CardHeader,
-  Image,
 } from "@nextui-org/react";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
+
+  const handleAddToWatchlist = (movie) => {
+    console.log("WATCHLIST: ", movie);
+  };
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
       <ModalContent>
         {(onClose) => (
           <div
-            className="p-8 min-h-[800px] bg-slate-300 text-white text-shadow relative bg-cover bg-center"
+            className="p-8 min-h-[800px] text-white text-shadow relative bg-cover bg-center"
             style={{
               backgroundImage: `url(${backDropImage})`,
             }}
           >
             <ModalHeader className="text-7xl">
-              {selectedMovie.title}
+              {selectedMovie.title ? selectedMovie.title : selectedMovie.name}
             </ModalHeader>
-            <ModalBody className="w-1/2 text-shadow-sm">
+            <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/30 ">
               <div className="flex gap-5">
                 <p>R</p>
                 <p>1h50m</p>
@@ -37,7 +38,12 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
                 <p>Occult</p>
               </div>
               <div>
-                <Button color="primary">+ Watchlist</Button>
+                <Button
+                  color="primary"
+                  onClick={() => handleAddToWatchlist(selectedMovie.title)}
+                >
+                  + Watchlist
+                </Button>
               </div>
             </ModalBody>
             <ModalFooter>
