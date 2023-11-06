@@ -43,7 +43,9 @@ function App() {
     </div>
   ));
   const trendingAllCards = trendingAll.map((movie) => (
-    <MovieCard key={movie.id} movie={movie} />
+    <div key={movie.id} onClick={() => handleMovieClick(movie)}>
+      <MovieCard movie={movie} />
+    </div>
   ));
 
   return (
