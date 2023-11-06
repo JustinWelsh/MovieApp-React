@@ -15,4 +15,6 @@ body {
 
 body {
   background: #141414;
+  overflow: auto;
+  height: 100%;
 }
