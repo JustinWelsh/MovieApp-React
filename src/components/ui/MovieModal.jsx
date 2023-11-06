@@ -6,35 +6,39 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Card,
+  CardHeader,
+  Image,
 } from "@nextui-org/react";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
+  const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
   return (
-    <Modal
-      isOpen={isOpen}
-      onOpenChange={onOpenChange}
-      size="5xl"
-      className="bg-red-600"
-    >
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
       <ModalContent>
         {(onClose) => (
-          <div className="">
-            <ModalHeader className="flex flex-col gap-1">
+          <div
+            className="p-8 min-h-[800px] bg-slate-300 text-white text-shadow relative bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${backDropImage})`,
+            }}
+          >
+            <ModalHeader className="text-7xl">
               {selectedMovie.title}
             </ModalHeader>
-            <ModalBody>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-                amet hendrerit risus, sed porttitor quam.
-              </p>
-              <p>
-                Magna exercitation reprehenderit magna aute tempor cupidatat
-                consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex
-                incididunt cillum quis. Velit duis sit officia eiusmod Lorem
-                aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi
-                consectetur esse laborum eiusmod pariatur proident Lorem eiusmod
-                et. Culpa deserunt nostrud ad veniam.
-              </p>
+            <ModalBody className="w-1/2 text-shadow-sm">
+              <div className="flex gap-5">
+                <p>R</p>
+                <p>1h50m</p>
+                <p>2023</p>
+              </div>
+              <p>{selectedMovie.overview}</p>
+              <div className="flex gap-5">
+                <p>Horror</p>
+                <p>Occult</p>
+              </div>
+              <div>
+                <Button color="primary">+ Watchlist</Button>
+              </div>
             </ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>
