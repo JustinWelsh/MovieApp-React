@@ -26,7 +26,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
             <ModalHeader className="text-7xl">
               {selectedMovie.title ? selectedMovie.title : selectedMovie.name}
             </ModalHeader>
-            <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/30 ">
+            <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/40 shadow-lg">
               <div className="flex gap-5">
                 <p>R</p>
                 <p>1h50m</p>
