@@ -3,7 +3,6 @@ import { NextUIProvider } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 
 import "./App.css";
-import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
 import MovieCard from "./components/ui/card/MovieCard";
 import MovieCarousel from "./components/ui/MovieCarousel";
@@ -51,7 +50,6 @@ function App() {
   return (
     <NextUIProvider>
       <NavBar />
-      <Header />
 
       <MovieModal
         isOpen={isOpen}
