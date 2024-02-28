@@ -58,7 +58,7 @@ function App() {
         onOpenChange={onOpenChange}
         selectedMovie={selectedMovie}
       />
-      <div className="m-5 p-5">
+      <div className="">
         <h2 className="text-white text-4xl p-3">Popular Movies</h2>
         <MovieCarousel>{popularMovieCards}</MovieCarousel>
         <h2 className="text-white text-4xl p-3">Trending</h2>
