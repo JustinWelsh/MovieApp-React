@@ -1,7 +1,7 @@
 import React from "react";
 
 function MovieCarousel({ children }) {
-  return <div className="carousel rounded-box gap-5">{children}</div>;
+  return <div className="flex flex-wrap gap-3">{children}</div>;
 }
 
 export default MovieCarousel;
