@@ -23,7 +23,7 @@ function App() {
         setPopularMovies(popularData);
         setTrendingAll(trendingData);
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error Fetching Data:", error);
       }
     };
 
