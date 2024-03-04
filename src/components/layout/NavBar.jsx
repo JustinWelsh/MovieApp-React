@@ -24,17 +24,27 @@ export function NavBar(props) {
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
             <Link color="foreground" href="#">
-              Features
+              Home
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
             <Link href="#" aria-current="page" color="secondary">
-              Customers
+              Movies
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link color="foreground" href="#">
-              Integrations
+              TV Shows
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              New
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              My List
             </Link>
           </NavbarItem>
         </NavbarContent>

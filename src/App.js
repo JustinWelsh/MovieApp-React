@@ -3,7 +3,6 @@ import { NextUIProvider } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 
 import "./App.css";
-import Header from "./components/layout/Header";
 import { NavBar } from "./components/layout/NavBar";
 import MovieCard from "./components/ui/card/MovieCard";
 import MovieCarousel from "./components/ui/MovieCarousel";
@@ -51,14 +50,13 @@ function App() {
   return (
     <NextUIProvider>
       <NavBar />
-      <Header />
 
       <MovieModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         selectedMovie={selectedMovie}
       />
-      <div className="m-5 p-5">
+      <div className="">
         <h2 className="text-white text-4xl p-3">Popular Movies</h2>
         <MovieCarousel>{popularMovieCards}</MovieCarousel>
         <h2 className="text-white text-4xl p-3">Trending</h2>
