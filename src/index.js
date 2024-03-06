@@ -1,30 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home";
 import Watchlist from "./routes/Watchlist";
 import About from "./routes/About";
 import ErrorPage from "./routes/ErrorPage";
+import PageLayout from "./components/layout/PageLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <PageLayout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-  {
-    path: "/watchlist",
-    element: <Watchlist />,
-  },
-  {
-    path: "/about",
-    element: <About />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/watchlist",
+        element: <Watchlist />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
