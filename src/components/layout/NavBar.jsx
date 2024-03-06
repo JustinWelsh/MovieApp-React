@@ -3,7 +3,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Input,
   DropdownItem,
   DropdownTrigger,
@@ -13,6 +12,8 @@ import {
 } from "@nextui-org/react";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 // import { SearchIcon } from "./SearchIcon.jsx";
+import { Link } from "react-router-dom";
+
 export function NavBar(props) {
   return (
     <Navbar isBordered>
@@ -23,29 +24,22 @@ export function NavBar(props) {
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Home
-            </Link>
+            <Link to={`/home`}>Home</Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="secondary">
-              Movies
-            </Link>
+            <Link to={`#`}>Movies</Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              TV Shows
-            </Link>
+            <Link to={`#`}>TV Shows</Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              New
-            </Link>
+            <Link to={`#`}>New</Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              My List
-            </Link>
+            <Link to={`/watchlist`}>My List</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link to={`/about`}>About</Link>
           </NavbarItem>
         </NavbarContent>
       </NavbarContent>
