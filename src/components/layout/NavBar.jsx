@@ -10,37 +10,39 @@ import {
   DropdownMenu,
   Avatar,
 } from "@nextui-org/react";
+import { useState } from "react";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 // import { SearchIcon } from "./SearchIcon.jsx";
 import { Link } from "react-router-dom";
 
 export function NavBar(props) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const navbarItems = [
+    { label: "Home", to: "/home" },
+    { label: "Movies", to: "#" },
+    { label: "TV Shows", to: "#" },
+    { label: "New", to: "#" },
+    { label: "My List", to: "/watchlist" },
+    { label: "About", to: "/about" },
+  ];
+
   return (
-    <Navbar isBordered>
-      <NavbarContent justify="start">
-        <NavbarBrand className="mr-4">
+    <Navbar className="bg-black">
+      <NavbarContent className="">
+        <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="hidden sm:block font-bold text-inherit">ACME</p>
+          <p className="hidden sm:block font-bold text-red-500">ACME</p>
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
-          <NavbarItem>
-            <Link to={`/home`}>Home</Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link to={`#`}>Movies</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to={`#`}>TV Shows</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to={`#`}>New</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to={`/watchlist`}>My List</Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link to={`/about`}>About</Link>
-          </NavbarItem>
+          {navbarItems.map((item, index) => {
+            return (
+              <NavbarItem key={index} isActive={index === activeIndex}>
+                <Link to={item.to} onClick={() => setActiveIndex(index)}>
+                  {item.label}
+                </Link>
+              </NavbarItem>
+            );
+          })}
         </NavbarContent>
       </NavbarContent>
 
