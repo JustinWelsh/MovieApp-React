@@ -15,9 +15,11 @@ import { useState } from "react";
 // import { SearchIcon } from "./SearchIcon.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import { searchByMovieTitle } from "../../services/MovieService";
+import { useMovieSearchContext } from "../../context/MovieSearchContext";
 
 export function NavBar(props) {
   const navigate = useNavigate();
+  const { updateSearchedMovies } = useMovieSearchContext();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const navbarItems = [
@@ -34,6 +36,7 @@ export function NavBar(props) {
     const results = await searchByMovieTitle(movieTitle);
     if (results) {
       navigate("/search");
+      updateSearchedMovies(results);
     }
     if (!movieTitle) {
       console.log("empty");

@@ -6,6 +6,7 @@ import Search from "./routes/Search";
 import Watchlist from "./routes/Watchlist";
 import About from "./routes/About";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { MovieSearchProvider } from "./context/MovieSearchContext";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -33,7 +34,11 @@ const App = () => {
       ],
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <MovieSearchProvider>
+      <RouterProvider router={router} />
+    </MovieSearchProvider>
+  );
 };
 
 export default App;
