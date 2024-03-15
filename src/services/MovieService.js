@@ -42,4 +42,27 @@ export async function fetchTrendingAll() {
     throw error; // Re-throw the error for higher-level error handling
   }
 }
-fetchTrendingAll();
+
+export async function searchByMovieTitle(movieTitle) {
+  try {
+    const url = `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
+
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error(
+        `Error fetching Searched movie data: Status ${response.status}`
+      );
+    }
+    const data = await response.json();
+    console.log(data);
+    return data.results;
+  } catch (error) {}
+}
