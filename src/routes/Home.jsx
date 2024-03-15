@@ -51,9 +51,9 @@ const Home = () => {
         selectedMovie={selectedMovie}
       />
       <div className="">
-        <h2 className="text-white text-4xl p-3">Popular Movies</h2>
+        <h2 className="text-white text-lg p-3">Popular Movies</h2>
         <MovieCarousel>{popularMovieCards}</MovieCarousel>
-        <h2 className="text-white text-4xl p-3">Trending</h2>
+        <h2 className="text-white text-lg p-3">Trending</h2>
         <MovieCarousel>{trendingAllCards}</MovieCarousel>
       </div>
     </NextUIProvider>
