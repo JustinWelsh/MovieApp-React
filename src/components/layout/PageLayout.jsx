@@ -7,7 +7,9 @@ const PageLayout = () => {
   return (
     <>
       <NavBar />
-      <Outlet />
+      <div className="px-12">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );
