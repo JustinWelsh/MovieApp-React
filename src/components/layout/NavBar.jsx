@@ -35,6 +35,10 @@ export function NavBar(props) {
     if (results) {
       navigate("/search");
     }
+    if (!movieTitle) {
+      console.log("empty");
+      navigate("/home");
+    }
     console.log(results);
   };
   return (
