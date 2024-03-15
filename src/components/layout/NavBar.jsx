@@ -14,6 +14,7 @@ import { useState } from "react";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 // import { SearchIcon } from "./SearchIcon.jsx";
 import { Link } from "react-router-dom";
+import { searchByMovieTitle } from "../../services/MovieService";
 
 export function NavBar(props) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -26,6 +27,11 @@ export function NavBar(props) {
     { label: "About", to: "/about" },
   ];
 
+  const handleInputChange = async (e) => {
+    const movieTitle = e.target.value;
+    const results = await searchByMovieTitle(movieTitle);
+    console.log(results);
+  };
   return (
     <Navbar className="bg-black">
       <NavbarContent className="">
@@ -59,6 +65,7 @@ export function NavBar(props) {
           size="sm"
           // startContent={<SearchIcon size={18} />}
           type="search"
+          onChange={handleInputChange}
         />
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
