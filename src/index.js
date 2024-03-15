@@ -7,6 +7,7 @@ import Watchlist from "./routes/Watchlist";
 import About from "./routes/About";
 import ErrorPage from "./routes/ErrorPage";
 import PageLayout from "./components/layout/PageLayout";
+import Search from "./routes/Search";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
       },
       {
         path: "/watchlist",

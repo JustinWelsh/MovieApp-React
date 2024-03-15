@@ -13,10 +13,12 @@ import {
 import { useState } from "react";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 // import { SearchIcon } from "./SearchIcon.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { searchByMovieTitle } from "../../services/MovieService";
 
 export function NavBar(props) {
+  const navigate = useNavigate();
+
   const [activeIndex, setActiveIndex] = useState(0);
   const navbarItems = [
     { label: "Home", to: "/home" },
@@ -30,6 +32,9 @@ export function NavBar(props) {
   const handleInputChange = async (e) => {
     const movieTitle = e.target.value;
     const results = await searchByMovieTitle(movieTitle);
+    if (results) {
+      navigate("/search");
+    }
     console.log(results);
   };
   return (
