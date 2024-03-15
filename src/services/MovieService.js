@@ -62,6 +62,6 @@ export async function searchByMovieTitle(movieTitle) {
       );
     }
     const data = await response.json();
-    return data.results;
+    return data;
   } catch (error) {}
 }
