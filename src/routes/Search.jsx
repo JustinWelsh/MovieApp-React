@@ -10,8 +10,8 @@ const Search = () => {
       Search Works!!
       {searchedMovies.results && (
         <div className="flex flex-wrap gap-3">
-          {searchedMovies.results.map((movie) => {
-            return <MovieCard movie={movie} />;
+          {searchedMovies.results.map((movie, index) => {
+            return <MovieCard movie={movie} key={index} />;
           })}
         </div>
       )}
