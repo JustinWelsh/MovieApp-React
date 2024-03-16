@@ -50,12 +50,22 @@ const Home = () => {
         onOpenChange={onOpenChange}
         selectedMovie={selectedMovie}
       />
-      <div className="">
-        <h2 className="text-white text-lg p-3">Popular Movies</h2>
-        <MovieCarousel>{popularMovieCards}</MovieCarousel>
-        <h2 className="text-white text-lg p-3">Trending</h2>
-        <MovieCarousel>{trendingAllCards}</MovieCarousel>
-      </div>
+      <section className="">
+        <div className="p-8">
+          <h2 className="text-5xl">Welcome.</h2>
+          <h3 className="text-3xl">
+            Millions of movies, TV shows and people to discover. Explore now.
+          </h3>
+        </div>
+      </section>
+      <section className="">
+        <div className="p-8">
+          <h2 className="text-white text-lg p-3">Popular Movies</h2>
+          <MovieCarousel>{popularMovieCards}</MovieCarousel>
+          <h2 className="text-white text-lg p-3">Trending</h2>
+          <MovieCarousel>{trendingAllCards}</MovieCarousel>
+        </div>
+      </section>
     </NextUIProvider>
   );
 };
