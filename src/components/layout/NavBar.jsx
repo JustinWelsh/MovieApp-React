@@ -79,6 +79,7 @@ export function NavBar(props) {
                   onClick={() => {
                     setActiveIndex(index);
                     setUserSearchInput("");
+                    localStorage.setItem("userSearchInput", "");
                   }}
                 >
                   {item.label}
