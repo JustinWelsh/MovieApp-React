@@ -68,7 +68,8 @@ export function NavBar(props) {
       <NavbarContent className="">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="hidden sm:block font-bold text-red-500">ACME</p>
+          {/* <p className="hidden sm:block font-bold text-red-500">ACME</p> */}
+          <img src="/TMDB.svg" alt="Logo" className="h-10" />
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-3">
           {navbarItems.map((item, index) => {
