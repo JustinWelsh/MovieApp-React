@@ -4,7 +4,6 @@ import MovieCard from "../components/ui/card/MovieCard";
 
 const Search = () => {
   const { searchedMovies } = useMovieSearchContext();
-  console.log("Searched Movies", searchedMovies);
   return (
     <div>
       Search Works!!

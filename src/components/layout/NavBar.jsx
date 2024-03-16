@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   Avatar,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { AcmeLogo } from "./AcmeLogo.jsx";
 // import { SearchIcon } from "./SearchIcon.jsx";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,8 +20,27 @@ import { useMovieSearchContext } from "../../context/MovieSearchContext";
 export function NavBar(props) {
   const navigate = useNavigate();
   const { updateSearchedMovies } = useMovieSearchContext();
+  const [userSearchInput, setUserSearchInput] = useState(
+    localStorage.getItem("userSearchInput")
+  );
 
   const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    const initialize = async () => {
+      if (!localStorage.getItem("userSearchInput")) {
+        localStorage.setItem("userSearchInput", "");
+      } else {
+        const results = await searchByMovieTitle(
+          localStorage.getItem("userSearchInput")
+        );
+        if (results) {
+          navigate("/search");
+          updateSearchedMovies(results);
+        }
+      }
+    };
+    initialize();
+  }, []);
   const navbarItems = [
     { label: "Home", to: "/home" },
     { label: "Movies", to: "#" },
@@ -33,16 +52,16 @@ export function NavBar(props) {
 
   const handleInputChange = async (e) => {
     const movieTitle = e.target.value;
+    setUserSearchInput(movieTitle);
+    localStorage.setItem("userSearchInput", movieTitle);
     const results = await searchByMovieTitle(movieTitle);
     if (results) {
       navigate("/search");
       updateSearchedMovies(results);
     }
     if (!movieTitle) {
-      console.log("empty");
       navigate("/home");
     }
-    console.log(results);
   };
   return (
     <Navbar className="bg-black">
@@ -55,7 +74,13 @@ export function NavBar(props) {
           {navbarItems.map((item, index) => {
             return (
               <NavbarItem key={index} isActive={index === activeIndex}>
-                <Link to={item.to} onClick={() => setActiveIndex(index)}>
+                <Link
+                  to={item.to}
+                  onClick={() => {
+                    setActiveIndex(index);
+                    setUserSearchInput("");
+                  }}
+                >
                   {item.label}
                 </Link>
               </NavbarItem>
@@ -78,6 +103,7 @@ export function NavBar(props) {
           // startContent={<SearchIcon size={18} />}
           type="search"
           onChange={handleInputChange}
+          value={userSearchInput}
         />
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
