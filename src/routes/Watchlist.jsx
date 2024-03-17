@@ -6,8 +6,8 @@ const Watchlist = () => {
   const { watchlist } = useWatchlistContext();
   console.log("Watchlist Page", watchlist);
   return (
-    <div>
-      Watchlist
+    <div className="min-h-[1011px]">
+      Watchlist Page!!
       <div className="p-8">
         {watchlist && (
           <div className="flex flex-wrap gap-3">
