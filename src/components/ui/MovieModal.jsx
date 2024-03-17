@@ -9,12 +9,13 @@ import {
 } from "@nextui-org/react";
 import { useWatchlistContext } from "../../context/WatchlistContext";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
-  const { addMovieToWatchlist } = useWatchlistContext();
+  const { watchlist, addMovieToWatchlist } = useWatchlistContext();
 
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
 
   const handleAddToWatchlist = (movie) => {
     addMovieToWatchlist(movie);
+    console.log(watchlist);
   };
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
