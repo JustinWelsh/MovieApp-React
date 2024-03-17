@@ -16,7 +16,7 @@ const Search = () => {
     console.log("Clicked", movie);
   };
   return (
-    <section>
+    <section className="min-h-[1011px]">
       <MovieModal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
