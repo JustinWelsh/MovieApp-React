@@ -4,16 +4,20 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const WatchlistContext = createContext(null);
 
 const WatchlistProvider = ({ children }) => {
-  const [watchlist, setWatchlist] = useState(
-    localStorage.getItem("watchlist")
-      ? JSON.parse(localStorage.getItem("watchlist"))
-      : []
-  );
+  const loadWatchlistFromLocalStorage = () => {
+    const storedWatchlist = localStorage.getItem("watchlist");
+    return storedWatchlist ? JSON.parse(storedWatchlist) : [];
+  };
+  const [watchlist, setWatchlist] = useState(loadWatchlistFromLocalStorage());
 
   useEffect(() => {
-    console.log("Context Effect", watchlist);
-    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    //  console.log("Context Effect", watchlist);
+    const saveWatchlistToLocalStorage = (watchlist) => {
+      localStorage.setItem("watchlist", JSON.stringify(watchlist));
+    };
+    saveWatchlistToLocalStorage(watchlist);
   }, [watchlist]);
+
   const addMovieToWatchlist = (obj) => {
     return setWatchlist((prev) => [...prev, obj]);
   };
