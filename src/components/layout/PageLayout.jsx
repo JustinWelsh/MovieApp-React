@@ -7,7 +7,9 @@ const PageLayout = () => {
   return (
     <>
       <NavBar />
-      <Outlet />
+      <div className="min-h-[1011px]">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );
