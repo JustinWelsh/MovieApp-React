@@ -9,13 +9,22 @@ import {
 } from "@nextui-org/react";
 import { useWatchlistContext } from "../../context/WatchlistContext";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
-  const { watchlist, addMovieToWatchlist } = useWatchlistContext();
+  const { watchlist, addMovieToWatchlist, removeMovieFromWatchlist } =
+    useWatchlistContext();
 
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
 
   const handleAddToWatchlist = (movie) => {
     addMovieToWatchlist(movie);
-    console.log(watchlist);
+  };
+  const handleRemoveFromWatchlist = (movie) => {
+    removeMovieFromWatchlist(movie.id);
+  };
+
+  const isMovieInWatchlist = () => {
+    return (
+      watchlist.find((movie) => selectedMovie.id === movie.id) !== undefined
+    );
   };
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
@@ -42,12 +51,21 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
                 <p>Occult</p>
               </div>
               <div>
-                <Button
-                  color="primary"
-                  onClick={() => handleAddToWatchlist(selectedMovie)}
-                >
-                  + Watchlist
-                </Button>
+                {isMovieInWatchlist() ? (
+                  <Button
+                    color="primary"
+                    onClick={() => handleRemoveFromWatchlist(selectedMovie)}
+                  >
+                    - Watchlist
+                  </Button>
+                ) : (
+                  <Button
+                    color="primary"
+                    onClick={() => handleAddToWatchlist(selectedMovie)}
+                  >
+                    + Watchlist
+                  </Button>
+                )}
               </div>
             </ModalBody>
             <ModalFooter>

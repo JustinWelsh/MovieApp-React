@@ -22,12 +22,14 @@ const WatchlistProvider = ({ children }) => {
     return setWatchlist((prev) => [...prev, obj]);
   };
 
-  //   const removeMovieFromWatchlist = (movieId) => {
-  //     setWatchlist((prev) => prev.filter((movie) => movie.id !== movieId));
-  //   };
+  const removeMovieFromWatchlist = (movieId) => {
+    setWatchlist((prev) => prev.filter((movie) => movie.id !== movieId));
+  };
 
   return (
-    <WatchlistContext.Provider value={{ watchlist, addMovieToWatchlist }}>
+    <WatchlistContext.Provider
+      value={{ watchlist, addMovieToWatchlist, removeMovieFromWatchlist }}
+    >
       {children}
     </WatchlistContext.Provider>
   );
