@@ -11,7 +11,6 @@ import { useWatchlistContext } from "../../context/WatchlistContext";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const { watchlist, addMovieToWatchlist, removeMovieFromWatchlist } =
     useWatchlistContext();
-
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
 
   const handleAddToWatchlist = (movie) => {
@@ -26,6 +25,16 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
       watchlist.find((movie) => selectedMovie.id === movie.id) !== undefined
     );
   };
+
+  const movieReleaseDate = new Date(selectedMovie.release_date);
+  // Get the various components of the date
+  const year = movieReleaseDate.getFullYear();
+  const month = (movieReleaseDate.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
+  const day = movieReleaseDate.getDate().toString().padStart(2, "0");
+
+  // Format the date string as desired
+  const formattedRealeseDate = `${month}/${day}/${year}`; // Example format: YYYY-MM-DD
+
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
       <ModalContent>
@@ -36,14 +45,15 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
               backgroundImage: `url(${backDropImage})`,
             }}
           >
-            <ModalHeader className="text-7xl">
+            <ModalHeader className="text-4xl">
               {selectedMovie.title ? selectedMovie.title : selectedMovie.name}
+              <span className="px-2 font-normal text-slate-300">({year})</span>
             </ModalHeader>
             <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/40 shadow-lg">
               <div className="flex gap-5">
                 <p>R</p>
                 <p>1h50m</p>
-                <p>2023</p>
+                <p>{formattedRealeseDate}</p>
               </div>
               <p>{selectedMovie.overview}</p>
               <div className="flex gap-5">
