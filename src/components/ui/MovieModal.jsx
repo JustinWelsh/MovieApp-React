@@ -7,11 +7,14 @@ import {
   ModalFooter,
   Button,
 } from "@nextui-org/react";
+import { useWatchlistContext } from "../../context/WatchlistContext";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
+  const { addMovieToWatchlist } = useWatchlistContext();
+
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
 
   const handleAddToWatchlist = (movie) => {
-    console.log("WATCHLIST: ", movie);
+    addMovieToWatchlist(movie);
   };
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
@@ -40,7 +43,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
               <div>
                 <Button
                   color="primary"
-                  onClick={() => handleAddToWatchlist(selectedMovie.title)}
+                  onClick={() => handleAddToWatchlist(selectedMovie)}
                 >
                   + Watchlist
                 </Button>

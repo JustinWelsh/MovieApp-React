@@ -7,6 +7,7 @@ import Watchlist from "./routes/Watchlist";
 import About from "./routes/About";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { MovieSearchProvider } from "./context/MovieSearchContext";
+import { WatchlistProvider } from "./context/WatchlistContext";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -35,9 +36,11 @@ const App = () => {
     },
   ]);
   return (
-    <MovieSearchProvider>
-      <RouterProvider router={router} />
-    </MovieSearchProvider>
+    <WatchlistProvider>
+      <MovieSearchProvider>
+        <RouterProvider router={router} />
+      </MovieSearchProvider>
+    </WatchlistProvider>
   );
 };
 

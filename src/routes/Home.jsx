@@ -11,7 +11,6 @@ const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [trendingAll, setTrendingAll] = useState([]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
   useEffect(() => {
     const fetchData = async () => {
       try {
