@@ -6,7 +6,6 @@ import { useDisclosure } from "@nextui-org/react";
 
 const Watchlist = () => {
   const { watchlist } = useWatchlistContext();
-  console.log("Watchlist Page", watchlist);
   const [selectedMovie, setSelectedMovie] = useState({});
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -14,7 +13,6 @@ const Watchlist = () => {
   const handleClick = (movie) => {
     setSelectedMovie(movie);
     onOpen();
-    console.log("Clicked", movie);
   };
   return (
     <div className="min-h-[1011px]">
