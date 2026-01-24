@@ -40,7 +40,7 @@ export function NavBar(props) {
       }
     };
     initialize();
-  }, []);
+  }, [navigate, updateSearchedMovies]);
   const navbarItems = [
     { label: "Home", to: "/" },
     { label: "Movies", to: "#" },
