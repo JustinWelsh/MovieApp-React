@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <footer className="section bg-black text-gray-300 py-8 mt-4">
