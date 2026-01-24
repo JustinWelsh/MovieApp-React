@@ -17,24 +17,25 @@ const App = () => {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "/home",
+          index: true,
           element: <Home />,
         },
         {
-          path: "/search",
+          path: "search",
           element: <Search />,
         },
         {
-          path: "/watchlist",
+          path: "watchlist",
           element: <Watchlist />,
         },
         {
-          path: "/about",
+          path: "about",
           element: <About />,
         },
       ],
     },
   ]);
+
   return (
     <WatchlistProvider>
       <MovieSearchProvider>
@@ -43,5 +44,6 @@ const App = () => {
     </WatchlistProvider>
   );
 };
+
 
 export default App;

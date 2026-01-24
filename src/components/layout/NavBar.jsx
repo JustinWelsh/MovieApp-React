@@ -42,7 +42,7 @@ export function NavBar(props) {
     initialize();
   }, []);
   const navbarItems = [
-    { label: "Home", to: "/home" },
+    { label: "Home", to: "/" },
     { label: "Movies", to: "#" },
     { label: "TV Shows", to: "#" },
     { label: "New", to: "#" },
