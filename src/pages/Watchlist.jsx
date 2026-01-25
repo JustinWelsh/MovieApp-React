@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useWatchlistContext } from "../context/WatchlistContext";
-import MovieCard from "../components/ui/card/MovieCard";
-import MovieModal from "../components/ui/MovieModal";
+import MovieCard from "../components/card/MovieCard";
+import MovieModal from "../components/modal/MovieModal";
 import { useDisclosure } from "@nextui-org/react";
 
 const Watchlist = () => {

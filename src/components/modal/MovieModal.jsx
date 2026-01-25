@@ -8,6 +8,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useWatchlistContext } from "../../context/WatchlistContext";
+
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const { watchlist, addMovieToWatchlist, removeMovieFromWatchlist } =
     useWatchlistContext();

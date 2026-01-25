@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 import { fetchPopularMovies, fetchTrendingAll } from "../services/MovieService";
-import MovieCard from "../components/ui/card/MovieCard";
-import MovieModal from "../components/ui/MovieModal";
-import MovieCarousel from "../components/ui/MovieCarousel";
+import MovieCard from "../components/card/MovieCard";
+import MovieCarousel from "../components/carousel/MovieCarousel";
+import MovieModal from "../components/modal/MovieModal";
 
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
