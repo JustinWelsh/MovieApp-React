@@ -60,7 +60,7 @@ export function NavBar(props) {
       updateSearchedMovies(results);
     }
     if (!movieTitle) {
-      navigate("/home");
+      navigate("/");
     }
   };
   return (
