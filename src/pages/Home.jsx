@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 import { fetchPopularMovies, fetchTrendingAll } from "../services/MovieService";
-import MovieCard from "../components/card/MovieCard";
 import MovieCarousel from "../components/carousel/MovieCarousel";
 import MovieModal from "../components/modal/MovieModal";
 
@@ -29,19 +28,8 @@ const Home = () => {
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
     onOpen();
-    console.log(movie);
   };
 
-  const popularMovieCards = popularMovies.map((movie) => (
-    <div key={movie.id} onClick={() => handleMovieClick(movie)}>
-      <MovieCard movie={movie} />
-    </div>
-  ));
-  const trendingAllCards = trendingAll.map((movie) => (
-    <div key={movie.id} onClick={() => handleMovieClick(movie)}>
-      <MovieCard movie={movie} />
-    </div>
-  ));
   return (
     <NextUIProvider>
       <MovieModal
@@ -60,9 +48,15 @@ const Home = () => {
       <section className="">
         <div className="p-8">
           <h2 className="text-white text-lg p-3">Popular Movies</h2>
-          <MovieCarousel>{popularMovieCards}</MovieCarousel>
+          <MovieCarousel
+            movies={popularMovies}
+            handleMovieClick={handleMovieClick}
+          />
           <h2 className="text-white text-lg p-3">Trending</h2>
-          <MovieCarousel>{trendingAllCards}</MovieCarousel>
+          <MovieCarousel
+            movies={trendingAll}
+            handleMovieClick={handleMovieClick}
+          />
         </div>
       </section>
     </NextUIProvider>
