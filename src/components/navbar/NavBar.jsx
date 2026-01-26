@@ -64,7 +64,7 @@ export function NavBar(props) {
     }
   };
   return (
-    <Navbar className="bg-black">
+    <Navbar className="bg-black" maxWidth={"full"}>
       <NavbarContent className="">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
