@@ -47,12 +47,12 @@ const Home = () => {
       </section>
       <section className="">
         <div className="p-8">
-          <h2 className="text-white text-lg p-3">Popular Movies</h2>
+          <h2 className="text-white text-xl p-3 font-bold">Popular Movies</h2>
           <MovieCarousel
             movies={popularMovies}
             handleMovieClick={handleMovieClick}
           />
-          <h2 className="text-white text-lg p-3">Trending</h2>
+          <h2 className="text-white text-xl p-3 font-bold">Trending</h2>
           <MovieCarousel
             movies={trendingAll}
             handleMovieClick={handleMovieClick}
