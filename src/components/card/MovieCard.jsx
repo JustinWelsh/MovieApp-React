@@ -7,7 +7,7 @@ function MovieCard({ movie }) {
     "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
   return (
     <Image
-      width={150}
+      width={200}
       alt={movie.title}
       src={movie.poster_path ? moviePoster : noPoster}
     />
