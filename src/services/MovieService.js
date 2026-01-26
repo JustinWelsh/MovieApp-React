@@ -65,3 +65,33 @@ export async function searchByMovieTitle(movieTitle) {
     return data;
   } catch (error) {}
 }
+
+export async function fetchTrailer(movieID) {
+  try {
+    const url = `https://api.themoviedb.org/3/movie/${movieID}/videos?language=en-US&api_key=${apiKey}`;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(
+        `Error fetching movie trailer data: Status ${response.status}`
+      );
+    }
+    const data = await response.json();
+
+    return data.results.find(
+      (result) =>
+        result.type === "Trailer" &&
+        result.name === "Official Trailer" &&
+        result.site === "YouTube"
+    );
+  } catch (error) {
+    console.error("Error:", error);
+    throw error; // Re-throw the error for higher-level error handling
+  }
+}
