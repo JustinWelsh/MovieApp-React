@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   ModalContent,
@@ -8,8 +8,23 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useWatchlistContext } from "../../context/WatchlistContext";
+import { fetchTrailer } from "../../services/MovieService";
 
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
+  const [trailer, setTrailer] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const trailerData = await fetchTrailer(selectedMovie.id);
+        setTrailer(trailerData);
+      } catch (error) {
+        console.error("Error Fetching Trailer Data:", error);
+      }
+    };
+
+    fetchData();
+  }, [selectedMovie]);
+
   const { watchlist, addMovieToWatchlist, removeMovieFromWatchlist } =
     useWatchlistContext();
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
@@ -77,6 +92,25 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
                     + Watchlist
                   </Button>
                 )}
+                {trailer && (
+                  <a
+                    className="mx-4 p-3"
+                    href={`https://www.youtube.com/watch?v=${trailer.key}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Trailer
+                  </a>
+                )}
+
+                {/* <iframe
+                  width="100%"
+                  height="400"
+                  src={`https://www.youtube.com/embed/${trailer.key}`}
+                  title="Movie Trailer"
+                  frameBorder="0"
+                  allowFullScreen
+                /> */}
               </div>
             </ModalBody>
             <ModalFooter>
