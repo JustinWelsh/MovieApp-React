@@ -146,7 +146,7 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
             //     Trailer
             //   </a>
             <Button color="primary" onClick={() => setShowTrailer(true)}>
-              Play Trailor
+              Play Trailer
             </Button>
           )}
         </div>
