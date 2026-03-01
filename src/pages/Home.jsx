@@ -52,7 +52,7 @@ const Home = () => {
             movies={popularMovies}
             handleMovieClick={handleMovieClick}
           />
-          <h2 className="text-white text-xl p-3 font-bold">Trending</h2>
+          <h2 className="text-white text-xl p-3 font-bold mt-8">Trending</h2>
           <MovieCarousel
             movies={trendingAll}
             handleMovieClick={handleMovieClick}
