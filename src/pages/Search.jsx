@@ -13,7 +13,6 @@ const Search = () => {
   const handleClick = (movie) => {
     setSelectedMovie(movie);
     onOpen();
-    console.log("Clicked", movie);
   };
   return (
     <section className="min-h-[1011px]">
@@ -26,9 +25,9 @@ const Search = () => {
         Search Works!!
         {searchedMovies.results && (
           <div className="flex flex-wrap gap-3">
-            {searchedMovies.results.map((movie, index) => {
+            {searchedMovies.results.map((movie) => {
               return (
-                <div key={index} onClick={() => handleClick(movie)}>
+                <div key={movie.id} onClick={() => handleClick(movie)}>
                   <MovieCard movie={movie} />
                 </div>
               );

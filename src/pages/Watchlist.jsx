@@ -25,9 +25,9 @@ const Watchlist = () => {
       <div className="p-8">
         {watchlist && (
           <div className="flex flex-wrap gap-3">
-            {watchlist.map((movie, index) => {
+            {watchlist.map((movie) => {
               return (
-                <div key={index} onClick={() => handleClick(movie)}>
+                <div key={movie.id} onClick={() => handleClick(movie)}>
                   <MovieCard movie={movie} />
                 </div>
               );
