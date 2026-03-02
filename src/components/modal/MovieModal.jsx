@@ -15,7 +15,13 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const [showTrailer, setShowTrailer] = useState(null);
 
   useEffect(() => {
-    setShowTrailer(false);
+    if (!isOpen) {
+      setShowTrailer(false);
+      return;
+    }
+
+    setTrailer(null);
+
     const fetchData = async () => {
       try {
         const trailerData = await fetchTrailer(selectedMovie.id);
@@ -26,7 +32,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
     };
 
     fetchData();
-  }, [selectedMovie]);
+  }, [isOpen, selectedMovie]);
   const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
 
   return (
