@@ -17,12 +17,14 @@ A React app for browsing movies, watching trailers, and managing a personal watc
 - [Framer Motion](https://www.framer.com/motion/) for animations
 - [TMDB API](https://developer.themoviedb.org/) for movie data and trailers
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [Vercel Serverless Functions](https://vercel.com/docs/functions) for API proxying
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node 20.x
+- Node 20.x (use `nvm use` in the project root — an `.nvmrc` is included)
+- [Vercel CLI](https://vercel.com/docs/cli) installed globally
 - A [TMDB API key](https://developer.themoviedb.org/docs/getting-started)
 
 ### Setup
@@ -33,24 +35,63 @@ A React app for browsing movies, watching trailers, and managing a personal watc
 npm install
 ```
 
-2. Create a `.env` file in the project root:
-
-```
-REACT_APP_ACCESS_TOKEN_TMDB=your_tmdb_api_key_here
-```
-
-3. Start the dev server:
+2. Install the Vercel CLI and link the project:
 
 ```bash
-npm start
+npm i -g vercel
+vercel login
+vercel link
+```
+
+3. Create a `.env` file in the project root:
+
+```
+TMDB_KEY=your_tmdb_api_key_here
+```
+
+4. Start the dev server:
+
+```bash
+vercel dev
 ```
 
 The app runs at [http://localhost:3000](http://localhost:3000).
+
+## Development: `vercel dev` vs `npm start`
+
+This project uses Vercel Serverless Functions to proxy requests to the TMDB API. The API key lives server-side and is never exposed to the browser.
+
+| Command | Use case |
+|---|---|
+| `vercel dev` | Full local dev — runs both the React app and the serverless API functions |
+| `npm start` | Runs the React app only — API calls will fail since the `/api/` routes won't exist |
+
+**Always use `vercel dev` for local development.** `npm start` is not sufficient because the app depends on the `/api/*` proxy routes to fetch movie data.
+
+## API Proxy
+
+All TMDB requests are routed through serverless functions in the `api/` directory:
+
+| Route | TMDB Endpoint |
+|---|---|
+| `/api/popular-movies` | `/3/movie/popular` |
+| `/api/trending` | `/3/trending/all/day` |
+| `/api/search?query=...` | `/3/search/movie` |
+| `/api/trailer?movieId=...` | `/3/movie/:id/videos` |
+
+The `TMDB_KEY` environment variable is read server-side only — it is never bundled into the frontend JS or visible in the browser network tab.
+
+## Deployment (Vercel)
+
+1. Push to GitHub
+2. Import the repo in [Vercel](https://vercel.com)
+3. Add `TMDB_KEY` as an environment variable in your Vercel project settings
+4. Deploy
 
 ## Available Scripts
 
 | Command | Description |
 |---|---|
-| `npm start` | Start the development server |
+| `vercel dev` | Start the full dev server (React + API functions) |
 | `npm run build` | Build for production |
 | `npm test` | Run tests |

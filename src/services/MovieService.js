@@ -1,97 +1,39 @@
-const apiKey = process.env.REACT_APP_ACCESS_TOKEN_TMDB;
 export async function fetchPopularMovies() {
-  try {
-    const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=${apiKey}`;
+  const response = await fetch("/api/popular-movies");
 
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    const data = await response.json();
-    // console.log("SERVICE: ", data.results);
-    return data.results;
-  } catch (error) {
-    throw error;
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
   }
+
+  return response.json();
 }
 
 export async function fetchTrendingAll() {
-  try {
-    const url = `https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=${apiKey}`;
+  const response = await fetch("/api/trending");
 
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    };
-
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      throw new Error(`Error fetching data: Status ${response.status}`);
-    }
-
-    const data = await response.json();
-    // console.log(data.results);
-    return data.results;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error; // Re-throw the error for higher-level error handling
+  if (!response.ok) {
+    throw new Error(`Error fetching data: Status ${response.status}`);
   }
+
+  return response.json();
 }
 
 export async function searchByMovieTitle(movieTitle) {
-  try {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${movieTitle}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`;
+  const response = await fetch(`/api/search?query=${encodeURIComponent(movieTitle)}`);
 
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    };
+  if (!response.ok) {
+    throw new Error(`Error fetching searched movie data: Status ${response.status}`);
+  }
 
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      throw new Error(
-        `Error fetching Searched movie data: Status ${response.status}`
-      );
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {}
+  return response.json();
 }
 
 export async function fetchTrailer(movieID) {
-  try {
-    const url = `https://api.themoviedb.org/3/movie/${movieID}/videos?language=en-US&api_key=${apiKey}`;
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-      },
-    };
+  const response = await fetch(`/api/trailer?movieId=${movieID}`);
 
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(
-        `Error fetching movie trailer data: Status ${response.status}`
-      );
-    }
-    const data = await response.json();
-
-    return data.results.find(
-      (result) =>
-        result.type === "Trailer" &&
-        result.name === "Official Trailer" &&
-        result.site === "YouTube"
-    );
-  } catch (error) {
-    console.error("Error:", error);
-    throw error; // Re-throw the error for higher-level error handling
+  if (!response.ok) {
+    throw new Error(`Error fetching movie trailer data: Status ${response.status}`);
   }
+
+  return response.json();
 }

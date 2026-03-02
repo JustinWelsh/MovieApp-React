@@ -24,3 +24,5 @@ yarn-error.log*
 
 # personal notes
 TODO.md
+.vercel
+.env*.local
