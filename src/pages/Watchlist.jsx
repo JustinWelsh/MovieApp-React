@@ -25,7 +25,7 @@ const Watchlist = () => {
         onOpenChange={onOpenChange}
         selectedMovie={selectedMovie}
       />
-      <motion.div className="p-8" {...fadeInUp}>
+      <motion.div className="p-8">
         <MovieCarousel movies={watchlist} handleMovieClick={handleClick} />
       </motion.div>
     </div>

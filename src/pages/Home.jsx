@@ -5,15 +5,8 @@ import { motion } from "framer-motion";
 import { fetchPopularMovies, fetchTrendingAll } from "../services/MovieService";
 import MovieCarousel from "../components/carousel/MovieCarousel";
 import MovieModal from "../components/modal/MovieModal";
+import { fadeInUp } from "../_config/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
-  }),
-};
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
   const [popularMovies, setPopularMovies] = useState([]);
@@ -56,24 +49,14 @@ const Home = () => {
       </section>
       <section className="">
         <div className="p-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
+          <motion.div {...fadeInUp}>
             <h2 className="text-white text-xl p-3 font-bold">Popular Movies</h2>
             <MovieCarousel
               movies={popularMovies}
               handleMovieClick={handleMovieClick}
             />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
+          <motion.div {...fadeInUp}>
             <h2 className="text-white text-xl p-3 font-bold mt-8">Trending</h2>
             <MovieCarousel
               movies={trendingAll}
