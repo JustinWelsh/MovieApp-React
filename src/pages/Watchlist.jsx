@@ -5,15 +5,8 @@ import MovieCard from "../components/card/MovieCard";
 import MovieModal from "../components/modal/MovieModal";
 import { useDisclosure } from "@nextui-org/react";
 import MovieCarousel from "../components/carousel/MovieCarousel";
+import { fadeInUp } from "../_config/animations";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, duration: 0.4, ease: "easeOut" },
-  }),
-};
 
 const Watchlist = () => {
   const { watchlist } = useWatchlistContext();
@@ -25,6 +18,7 @@ const Watchlist = () => {
     setSelectedMovie(movie);
     onOpen();
   };
+
   return (
     <div className="min-h-[1011px]">
       Watchlist Page!!
@@ -33,13 +27,7 @@ const Watchlist = () => {
         onOpenChange={onOpenChange}
         selectedMovie={selectedMovie}
       />
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="p-8"
-      >
+      <motion.div className="p-8" {...fadeInUp}>
         {/* {watchlist && (
           <div className="flex flex-wrap gap-3">
             {watchlist.map((movie) => {
