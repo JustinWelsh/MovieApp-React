@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useWatchlistContext } from "../context/WatchlistContext";
 import { motion } from "framer-motion";
-import MovieCard from "../components/card/MovieCard";
 import MovieModal from "../components/modal/MovieModal";
 import { useDisclosure } from "@nextui-org/react";
 import MovieCarousel from "../components/carousel/MovieCarousel";
 import { fadeInUp } from "../_config/animations";
-
 
 const Watchlist = () => {
   const { watchlist } = useWatchlistContext();
@@ -28,17 +26,6 @@ const Watchlist = () => {
         selectedMovie={selectedMovie}
       />
       <motion.div className="p-8" {...fadeInUp}>
-        {/* {watchlist && (
-          <div className="flex flex-wrap gap-3">
-            {watchlist.map((movie) => {
-              return (
-                <div key={movie.id} onClick={() => handleClick(movie)}>
-                  <MovieCard movie={movie} />
-                </div>
-              );
-            })}
-          </div>
-        )} */}
         <MovieCarousel movies={watchlist} handleMovieClick={handleClick} />
       </motion.div>
     </div>
