@@ -7,6 +7,7 @@ import {
   ModalFooter,
   Button,
 } from "@nextui-org/react";
+import { BiMoviePlay } from "react-icons/bi";
 import { useWatchlistContext } from "../../context/WatchlistContext";
 import { fetchTrailer } from "../../services/MovieService";
 
@@ -126,7 +127,7 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
           <p>Horror</p>
           <p>Occult</p>
         </div>
-        <div>
+        <div className="flex gap-3">
           {isMovieInWatchlist() ? (
             <Button
               color="primary"
@@ -152,6 +153,7 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
             //     Trailer
             //   </a>
             <Button color="primary" onClick={() => setShowTrailer(true)}>
+              <BiMoviePlay />
               Play Trailer
             </Button>
           )}
