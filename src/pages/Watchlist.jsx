@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import MovieModal from "../components/modal/MovieModal";
 import { useDisclosure } from "@nextui-org/react";
 import MovieCarousel from "../components/carousel/MovieCarousel";
-import { fadeInUp } from "../_config/animations";
 
 const Watchlist = () => {
   const { watchlist } = useWatchlistContext();
