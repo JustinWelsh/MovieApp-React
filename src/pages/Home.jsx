@@ -7,18 +7,6 @@ import MovieCarousel from "../components/carousel/MovieCarousel";
 import MovieModal from "../components/modal/MovieModal";
 import { fadeInUp } from "../_config/animations";
 
-const SkeletonCards = () => (
-  <div className="flex gap-4 pb-4">
-    {Array.from({ length: 8 }).map((_, i) => (
-      <Skeleton
-        key={i}
-        className="rounded-lg flex-shrink-0"
-        style={{ width: 200, height: 300 }}
-      />
-    ))}
-  </div>
-);
-
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
   const [popularMovies, setPopularMovies] = useState([]);
@@ -93,5 +81,16 @@ const Home = () => {
   );
 };
 
+const SkeletonCards = () => (
+  <div className="flex gap-4 pb-4">
+    {Array.from({ length: 8 }).map((_, i) => (
+      <Skeleton
+        key={i}
+        className="rounded-lg flex-shrink-0"
+        style={{ width: 200, height: 300 }}
+      />
+    ))}
+  </div>
+);
 
 export default Home;
