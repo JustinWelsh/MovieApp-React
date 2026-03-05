@@ -6,7 +6,7 @@ A React app for browsing movies, watching trailers, and managing a personal watc
 
 - **Home** — Browse popular and trending movies in an animated horizontal carousel
 - **Search** — Search movies by title with live results
-- **Movie Modal** — Click any movie to view details and play the official YouTube trailer
+- **Movie Modal** — Click any movie to view details and play the official YouTube trailer via `<iframe>`
 - **Watchlist** — Save and manage movies you want to watch (persisted via context)
 - **About** — Project info page
 
