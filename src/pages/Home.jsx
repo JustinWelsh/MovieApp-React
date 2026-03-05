@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider, Skeleton } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { fetchPopularMovies, fetchTrendingAll } from "../services/MovieService";
@@ -11,6 +11,7 @@ const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
   const [popularMovies, setPopularMovies] = useState([]);
   const [trendingAll, setTrendingAll] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +22,8 @@ const Home = () => {
         setTrendingAll(trendingData);
       } catch (error) {
         console.error("Error Fetching Data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -31,6 +34,7 @@ const Home = () => {
     setSelectedMovie(movie);
     onOpen();
   };
+
 
   return (
     <NextUIProvider>
@@ -51,17 +55,25 @@ const Home = () => {
         <div className="p-8">
           <motion.div {...fadeInUp}>
             <h2 className="text-white text-xl p-3 font-bold">Popular Movies</h2>
-            <MovieCarousel
-              movies={popularMovies}
-              handleMovieClick={handleMovieClick}
-            />
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={popularMovies}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
           <motion.div {...fadeInUp}>
             <h2 className="text-white text-xl p-3 font-bold mt-8">Trending</h2>
-            <MovieCarousel
-              movies={trendingAll}
-              handleMovieClick={handleMovieClick}
-            />
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={trendingAll}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
         </div>
       </section>
@@ -69,4 +81,18 @@ const Home = () => {
   );
 };
 
+
+  const SkeletonCards = () => (
+    <div className="flex gap-4 pb-4">
+      {Array.from({ length: 8 }).map((_, i) => (
+        <Skeleton
+          key={i}
+          className="rounded-lg flex-shrink-0"
+          style={{ width: 200, height: 300 }}
+        />
+      ))}
+    </div>
+  );
+
+  
 export default Home;
