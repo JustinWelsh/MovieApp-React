@@ -16,26 +16,37 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMovieData = async () => {
       try {
-        const [popularMoviesData, popularTVData, trendingMoviesData, trendingTVData] = await Promise.all([
+        const [popularMoviesData, trendingMoviesData] = await Promise.all([
           fetchPopular("movie"),
-          fetchPopular("tv"),
           fetchTrending("movie"),
-          fetchTrending("tv"),
         ]);
         setPopularMovies(popularMoviesData);
-        setPopularTV(popularTVData);
         setTrendingMovies(trendingMoviesData);
+      } catch (error) {
+        console.error("Error Fetching Movie Data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    const fetchTvData = async () => {
+      try {
+        const [popularTVData, trendingTVData] = await Promise.all([
+          fetchPopular("tv"),
+          fetchTrending("tv"),
+        ]);
+        setPopularTV(popularTVData);
         setTrendingTV(trendingTVData);
       } catch (error) {
-        console.error("Error Fetching Data:", error);
+        console.error("Error Fetching TV Data:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    fetchMovieData();
+    fetchTvData();
   }, []);
 
   const handleMovieClick = (movie) => {
