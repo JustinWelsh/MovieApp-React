@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NextUIProvider, Skeleton } from "@nextui-org/react";
 import { useDisclosure } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import { fetchPopularMovies, fetchTrendingAll } from "../services/MovieService";
+import { fetchPopular, fetchTrending } from "../services/MovieService";
 import MovieCarousel from "../components/carousel/MovieCarousel";
 import MovieModal from "../components/modal/MovieModal";
 import { fadeInUp } from "../_config/animations";
@@ -10,16 +10,24 @@ import { fadeInUp } from "../_config/animations";
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
   const [popularMovies, setPopularMovies] = useState([]);
-  const [trendingAll, setTrendingAll] = useState([]);
+  const [popularTV, setPopularTV] = useState([]);
+  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingTV, setTrendingTV] = useState([]);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const popularData = await fetchPopularMovies();
-        const trendingData = await fetchTrendingAll();
-        setPopularMovies(popularData);
-        setTrendingAll(trendingData);
+        const [popularMoviesData, popularTVData, trendingMoviesData, trendingTVData] = await Promise.all([
+          fetchPopular("movie"),
+          fetchPopular("tv"),
+          fetchTrending("movie"),
+          fetchTrending("tv"),
+        ]);
+        setPopularMovies(popularMoviesData);
+        setPopularTV(popularTVData);
+        setTrendingMovies(trendingMoviesData);
+        setTrendingTV(trendingTVData);
       } catch (error) {
         console.error("Error Fetching Data:", error);
       } finally {
@@ -55,25 +63,19 @@ const Home = () => {
         <div className="p-8">
           <motion.div {...fadeInUp}>
             <h2 className="text-white text-xl p-3 font-bold">Popular Movies</h2>
-            {loading ? (
-              <SkeletonCards />
-            ) : (
-              <MovieCarousel
-                movies={popularMovies}
-                handleMovieClick={handleMovieClick}
-              />
-            )}
+            {loading ? <SkeletonCards /> : <MovieCarousel movies={popularMovies} handleMovieClick={handleMovieClick} />}
           </motion.div>
           <motion.div {...fadeInUp}>
-            <h2 className="text-white text-xl p-3 font-bold mt-8">Trending</h2>
-            {loading ? (
-              <SkeletonCards />
-            ) : (
-              <MovieCarousel
-                movies={trendingAll}
-                handleMovieClick={handleMovieClick}
-              />
-            )}
+            <h2 className="text-white text-xl p-3 font-bold mt-8">Popular TV Shows</h2>
+            {loading ? <SkeletonCards /> : <MovieCarousel movies={popularTV} handleMovieClick={handleMovieClick} />}
+          </motion.div>
+          <motion.div {...fadeInUp}>
+            <h2 className="text-white text-xl p-3 font-bold mt-8">Trending Movies</h2>
+            {loading ? <SkeletonCards /> : <MovieCarousel movies={trendingMovies} handleMovieClick={handleMovieClick} />}
+          </motion.div>
+          <motion.div {...fadeInUp}>
+            <h2 className="text-white text-xl p-3 font-bold mt-8">Trending TV Shows</h2>
+            {loading ? <SkeletonCards /> : <MovieCarousel movies={trendingTV} handleMovieClick={handleMovieClick} />}
           </motion.div>
         </div>
       </section>

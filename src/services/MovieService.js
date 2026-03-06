@@ -1,5 +1,5 @@
-export async function fetchPopularMovies() {
-  const response = await fetch("/api/popular-movies");
+export async function fetchPopular(type = "movie") {
+  const response = await fetch(`/api/popular-movies?type=${type}`);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
@@ -8,8 +8,8 @@ export async function fetchPopularMovies() {
   return response.json();
 }
 
-export async function fetchTrendingAll() {
-  const response = await fetch("/api/trending");
+export async function fetchTrending(type = "all") {
+  const response = await fetch(`/api/trending?type=${type}`);
 
   if (!response.ok) {
     throw new Error(`Error fetching data: Status ${response.status}`);
