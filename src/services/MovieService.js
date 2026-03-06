@@ -1,5 +1,5 @@
 export async function fetchPopular(type = "movie") {
-  const response = await fetch(`/api/popular-movies?type=${type}`);
+  const response = await fetch(`/api/popular?type=${type}`);
 
   if (!response.ok) {
     throw new Error("Network response was not ok");
