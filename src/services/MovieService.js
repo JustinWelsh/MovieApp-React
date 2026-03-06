@@ -8,6 +8,10 @@ export async function fetchPopular(type = "movie") {
   return response.json();
 }
 
+/**
+ * Fetches trending content from TMDB.
+ * @param {"all" | "movie" | "tv" | "person"} type
+ */
 export async function fetchTrending(type = "all") {
   const response = await fetch(`/api/trending?type=${type}`);
 
