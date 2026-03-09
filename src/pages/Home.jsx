@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { fetchPopular, fetchTrending } from "../services/MovieService";
 import MovieCarousel from "../components/carousel/MovieCarousel";
 import MovieModal from "../components/modal/MovieModal";
-import { fadeInUp } from "../_config/animations";
+import { fadeInUp30 } from "../_config/animations";
 
 const Home = () => {
   const [selectedMovie, setSelectedMovie] = useState({});
@@ -72,21 +72,55 @@ const Home = () => {
       </section>
       <section className="">
         <div className="p-8">
-          <motion.div {...fadeInUp}>
+          <motion.div {...fadeInUp30}>
             <h2 className="text-white text-xl p-3 font-bold">Popular Movies</h2>
-            {loading ? <SkeletonCards /> : <MovieCarousel movies={popularMovies} handleMovieClick={handleMovieClick} />}
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={popularMovies}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
-          <motion.div {...fadeInUp}>
-            <h2 className="text-white text-xl p-3 font-bold mt-8">Popular TV Shows</h2>
-            {loading ? <SkeletonCards /> : <MovieCarousel movies={popularTV} handleMovieClick={handleMovieClick} />}
+          <motion.div {...fadeInUp30}>
+            <h2 className="text-white text-xl p-3 font-bold mt-8">
+              Popular TV Shows
+            </h2>
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={popularTV}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
-          <motion.div {...fadeInUp}>
-            <h2 className="text-white text-xl p-3 font-bold mt-8">Trending Movies</h2>
-            {loading ? <SkeletonCards /> : <MovieCarousel movies={trendingMovies} handleMovieClick={handleMovieClick} />}
+          <motion.div {...fadeInUp30}>
+            <h2 className="text-white text-xl p-3 font-bold mt-8">
+              Trending Movies
+            </h2>
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={trendingMovies}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
-          <motion.div {...fadeInUp}>
-            <h2 className="text-white text-xl p-3 font-bold mt-8">Trending TV Shows</h2>
-            {loading ? <SkeletonCards /> : <MovieCarousel movies={trendingTV} handleMovieClick={handleMovieClick} />}
+          <motion.div {...fadeInUp30}>
+            <h2 className="text-white text-xl p-3 font-bold mt-8">
+              Trending TV Shows
+            </h2>
+            {loading ? (
+              <SkeletonCards />
+            ) : (
+              <MovieCarousel
+                movies={trendingTV}
+                handleMovieClick={handleMovieClick}
+              />
+            )}
           </motion.div>
         </div>
       </section>
