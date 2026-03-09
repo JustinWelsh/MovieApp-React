@@ -7,9 +7,11 @@ import {
   ModalFooter,
   Button,
 } from "@nextui-org/react";
+import { motion } from "framer-motion";
 import { BiMoviePlay } from "react-icons/bi";
 import { useWatchlistContext } from "../../context/WatchlistContext";
 import { fetchTrailer } from "../../services/MovieService";
+import { fadeInUp10 } from "../../_config/animations";
 
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const [trailer, setTrailer] = useState(null);
@@ -144,18 +146,12 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
             </Button>
           )}
           {trailer && (
-            //   <a
-            //     className="mx-4 p-3"
-            //     href={`https://www.youtube.com/watch?v=${trailer.key}`}
-            //     target="_blank"
-            //     rel="noopener noreferrer"
-            //   >
-            //     Trailer
-            //   </a>
-            <Button color="primary" onClick={() => setShowTrailer(true)}>
-              <BiMoviePlay />
-              Play Trailer
-            </Button>
+            <motion.button {...fadeInUp10}>
+              <Button color="primary" onClick={() => setShowTrailer(true)}>
+                <BiMoviePlay />
+                Play Trailer
+              </Button>
+            </motion.button>
           )}
         </div>
       </ModalBody>
