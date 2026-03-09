@@ -14,7 +14,7 @@ Browser → /api/* → TMDB API (key never reaches browser)
 
 | File | Route | Description |
 |---|---|---|
-| `popular-movies.js` | `GET /api/popular-movies` | Fetches the current popular movies list |
+| `popular.js` | `GET /api/popular` | Fetches the current popular movies list |
 | `trending.js` | `GET /api/trending` | Fetches today's trending movies and TV |
 | `search.js` | `GET /api/search?query=...` | Searches movies by title |
 | `trailer.js` | `GET /api/trailer?movieId=...` | Fetches the official YouTube trailer for a movie |
