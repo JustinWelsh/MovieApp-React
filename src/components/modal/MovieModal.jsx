@@ -104,25 +104,19 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
     );
   };
 
-  const movieReleaseDate = new Date(selectedMovie.release_date);
-  // Get the various components of the date
-  const year = movieReleaseDate.getFullYear();
-  const month = (movieReleaseDate.getMonth() + 1).toString().padStart(2, "0"); // Month is zero-indexed
-  const day = movieReleaseDate.getDate().toString().padStart(2, "0");
-
-  // Format the date string as desired
-  const formattedRealeseDate = `${month}/${day}/${year}`; // Example format: YYYY-MM-DD
   return (
     <>
       <ModalHeader className="text-4xl">
         {selectedMovie.title ? selectedMovie.title : selectedMovie.name}
-        <span className="px-2 font-normal text-slate-300">({year})</span>
+        <span className="px-2 font-normal text-slate-300">
+          <ReleaseDate date={selectedMovie.release_date} type="year" />
+        </span>
       </ModalHeader>
       <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/40 shadow-lg">
         <div className="flex gap-5">
           <p>R</p>
           <p>1h50m</p>
-          <p>{formattedRealeseDate}</p>
+          <ReleaseDate date={selectedMovie.release_date} type="full" />
         </div>
         <p>{selectedMovie.overview}</p>
         <div className="flex gap-5">
@@ -155,6 +149,34 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
           )}
         </div>
       </ModalBody>
+    </>
+  );
+};
+
+/**
+ * @typedef {Object} ReleaseDateProps
+ * @property {string} date - ISO date string (e.g. "2024-03-11")
+ * @property {"full"|"year"} type - Display format: "full" for MM/DD/YYYY, "year" for year only
+ */
+
+/** @param {ReleaseDateProps} props */
+const ReleaseDate = ({ date, type }) => {
+
+  if (!date) {
+     console.warn("No date was recieved in ReleaseDate component..")
+     return
+  }
+
+  const dateObj = new Date(date);
+
+  const year = dateObj.getFullYear();
+  const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
+  const day = dateObj.getDate().toString().padStart(2, "0");
+
+  return (
+    <>
+      {(!type || type === "full") && <span>{`${month}/${day}/${year}`}</span>}
+      {type === "year" && <span>{`${year}`}</span>}
     </>
   );
 };
