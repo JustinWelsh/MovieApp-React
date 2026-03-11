@@ -88,6 +88,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
 }
 
 const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
+     const { id, title, name, release_date, overview } = selectedMovie;
   const { watchlist, addMovieToWatchlist, removeMovieFromWatchlist } =
     useWatchlistContext();
 
@@ -99,26 +100,24 @@ const MovieDetails = ({ selectedMovie, trailer, setShowTrailer }) => {
   };
 
   const isMovieInWatchlist = () => {
-    return (
-      watchlist.find((movie) => selectedMovie.id === movie.id) !== undefined
-    );
+    return watchlist.find((movie) => id === movie.id) !== undefined;
   };
 
   return (
     <>
       <ModalHeader className="text-4xl">
-        {selectedMovie.title ? selectedMovie.title : selectedMovie.name}
+        {title ? title : name}
         <span className="px-2 font-normal text-slate-300">
-          <ReleaseDate date={selectedMovie.release_date} type="year" />
+          {release_date && <ReleaseDate date={release_date} type="year" />}
         </span>
       </ModalHeader>
       <ModalBody className="md:w-1/2 p-8 rounded-lg text-shadow-sm bg-black/40 shadow-lg">
         <div className="flex gap-5">
           <p>R</p>
           <p>1h50m</p>
-          <ReleaseDate date={selectedMovie.release_date} type="full" />
+          {release_date && <ReleaseDate date={release_date} type="full" />}
         </div>
-        <p>{selectedMovie.overview}</p>
+        <p>{overview}</p>
         <div className="flex gap-5">
           <p>Horror</p>
           <p>Occult</p>
