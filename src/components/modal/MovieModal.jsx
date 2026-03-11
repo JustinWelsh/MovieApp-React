@@ -16,6 +16,7 @@ import { fadeInUp10 } from "../../_config/animations";
 function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
   const [trailer, setTrailer] = useState(null);
   const [showTrailer, setShowTrailer] = useState(null);
+  const { id, backdrop_path } = selectedMovie;
 
   useEffect(() => {
     if (!isOpen) {
@@ -27,7 +28,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
 
     const fetchData = async () => {
       try {
-        const trailerData = await fetchTrailer(selectedMovie.id);
+        const trailerData = await fetchTrailer(id);
         setTrailer(trailerData);
       } catch (error) {
         console.error("Error Fetching Trailer Data:", error);
@@ -36,7 +37,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
 
     fetchData();
   }, [isOpen, selectedMovie]);
-  const backDropImage = `https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path}`;
+  const backDropImage = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
