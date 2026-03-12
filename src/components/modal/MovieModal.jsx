@@ -36,7 +36,7 @@ function MovieModal({ isOpen, onOpenChange, selectedMovie }) {
     };
 
     fetchData();
-  }, [isOpen, selectedMovie]);
+  }, [isOpen, id]);
   const backDropImage = `https://image.tmdb.org/t/p/original${backdrop_path}`;
 
   return (
