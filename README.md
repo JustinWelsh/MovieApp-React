@@ -73,12 +73,109 @@ All TMDB requests are routed through serverless functions in the `api/` director
 
 | Route | TMDB Endpoint |
 |---|---|
-| `/api/popular-movies` | `/3/movie/popular` |
+| `/api/popular` | `/3/movie/popular`, `/3/tv/popular` |
 | `/api/trending` | `/3/trending/all/day` |
-| `/api/search?query=...` | `/3/search/movie` |
-| `/api/trailer?movieId=...` | `/3/movie/:id/videos` |
+| `/api/search?query=...` | `/3/search/multi` |
+| `/api/trailer?mediaType=&mediaId=` | `/3/{type}/:id/videos` |
+| `/api/details?mediaType=&mediaId=` | `/3/{type}/:id` |
 
 The `TMDB_KEY` environment variable is read server-side only — it is never bundled into the frontend JS or visible in the browser network tab.
+
+## Architecture
+
+### Request Flow
+
+```
+Browser (React)
+      │
+      │  fetch("/api/...")
+      ▼
+Vercel Serverless Function  ──►  TMDB API
+      │                              │
+      │  JSON response               │
+      ◄──────────────────────────────┘
+      │
+      ▼
+src/services/MovieService.js
+      │
+      ▼
+React Component / Context
+```
+
+### State Management
+
+| Context | Persistence | Stores |
+|---|---|---|
+| `WatchlistContext` | `localStorage` | Saved watchlist items |
+| `MovieSearchContext` | In-memory | Search results |
+
+Selected movie state (for the modal) is held in local component state on each page.
+
+### Routing
+
+```
+App.js
+ └── RouterProvider
+      └── MainLayout  (NavBar + Outlet + Footer)
+           ├── /            →  Home.jsx
+           ├── /search      →  Search.jsx
+           ├── /watchlist   →  Watchlist.jsx
+           ├── /about       →  About.jsx
+           └── *            →  ErrorPage.jsx
+```
+
+## Project Structure
+
+```
+MovieApp/
+├── api/                        # Vercel serverless functions (TMDB proxy)
+│   ├── details.js
+│   ├── popular.js
+│   ├── search.js
+│   ├── trailer.js
+│   └── trending.js
+│
+└── src/
+    ├── _config/                # Shared constants
+    │   ├── animations.js       # Framer Motion presets
+    │   └── genres.js           # TMDB genre ID → name map
+    │
+    ├── components/
+    │   ├── card/
+    │   │   └── MovieCard.jsx   # Poster card with portal-rendered hover overlay
+    │   ├── carousel/
+    │   │   └── MovieCarousel.jsx
+    │   ├── footer/
+    │   │   └── Footer.jsx
+    │   ├── hero/
+    │   │   └── HeroBanner.jsx  # Full-width hero with backdrop + star rating
+    │   ├── modal/
+    │   │   └── MovieModal.jsx  # Detail modal with trailer embed
+    │   └── navbar/
+    │       └── NavBar.jsx      # Transparent → solid on scroll, live search
+    │
+    ├── context/
+    │   ├── MovieSearchContext.js
+    │   └── WatchlistContext.js
+    │
+    ├── hooks/
+    │   └── useHomeData.js      # Data fetching for the home page
+    │
+    ├── layout/
+    │   └── MainLayout.jsx      # Shared shell: NavBar + Outlet + Footer
+    │
+    ├── pages/
+    │   ├── Home.jsx
+    │   ├── Search.jsx
+    │   ├── Watchlist.jsx
+    │   ├── About.jsx
+    │   └── ErrorPage.jsx
+    │
+    ├── services/
+    │   └── MovieService.js     # fetch wrappers for all /api/* endpoints
+    │
+    └── App.js                  # Router setup + context providers
+```
 
 ## Deployment (Vercel)
 
